@@ -3,15 +3,15 @@ name: Glaze
 description: >-
   Turn any output you already have — a plan, a report, a summary, release notes,
   any text — into a beautiful, self-contained themed HTML page. Glaze *skins*
-  content; it does not generate it. Ships a six-theme library (synthwave · manga ·
-  brutalist · terminal · sumi · coffee), each a self-contained CSS preset built
+  content; it does not generate it. Ships a seven-theme library (synthwave · manga ·
+  brutalist · terminal · sumi · coffee · dieselpunk), each a self-contained CSS preset built
   from award-winning design techniques. Zero build step, no JS framework, fonts
   via Google Fonts, all CSS inlined so the file travels as a single standalone
   artifact. Extensible: a new theme is one CSS file. Output is verified by opening
   it in a browser. USE WHEN glaze, glaze this, render as HTML, themed HTML, style
   this output, make this pretty, beautify this plan/report/summary, skin this
   content, apply a theme, turn this into a styled page, --style,
-  synthwave/manga/brutalist/terminal/sumi/coffee HTML, show the theme catalog. NOT
+  synthwave/manga/brutalist/terminal/sumi/coffee/dieselpunk HTML, show the theme catalog. NOT
   FOR generating the content itself (produce the content first, then glaze the
   result), static illustrations or diagrams, or video.
 ---
@@ -36,10 +36,11 @@ glaze <content-or-reference> --style <theme>
 - `<content>` — pasted text, a file path, an already-extracted body, the previous
   message, or a named artifact. If it's ambiguous, ask what to glaze.
 - `--style <theme>` — one of: `synthwave` `manga` `brutalist` `terminal` `sumi`
-  `coffee`. Aliases: `vaporwave`→synthwave, `anime`→manga,
+  `coffee` `dieselpunk`. Aliases: `vaporwave`→synthwave, `anime`→manga,
   `neo`/`neobrutalist`→brutalist, `crt`/`tui`→terminal,
-  `wabi`/`wabisabi`/`sumie`→sumi, `cafe`→coffee.
-- No `--style` given → **ask which theme** (offer the six; `terminal` is a safe
+  `wabi`/`wabisabi`/`sumie`→sumi, `cafe`→coffee,
+  `diesel`/`steampunk`/`brass`→dieselpunk.
+- No `--style` given → **ask which theme** (offer the seven; `terminal` is a safe
   default for technical content). Never silently pick.
 - `--style random` → choose one at random and say which.
 
@@ -53,6 +54,7 @@ glaze <content-or-reference> --style <theme>
 | `terminal` | CRT/TUI Tokyo Night | CRT screen layer + vim statusbar + diff lines | technical content (safe default) |
 | `sumi` | sumi-e / wabi-sabi | 間 ma + ensō + tate-gaki + hanko seal | calm, reflective, sophisticated |
 | `coffee` | specialty roaster label | tasting-notes headline + roast meter + kraft grain | personal, blog, editorial |
+| `dieselpunk` | interwar brass & oiled steel | riveted brass plates + engraved title + amber power-bar + gauges + phosphor stamp | bold industrial, ops, retro-futurist |
 
 Each theme lives at `Themes/<theme>.css` and is fully self-contained.
 `Themes/_base.css` owns the theme-agnostic content model (layout, flow,
@@ -83,7 +85,7 @@ theme via `body::before/::after` and never require extra markup.
 
 ## Catalog
 
-`Catalog.html` is a self-contained gallery that renders one sample across all six
+`Catalog.html` is a self-contained gallery that renders one sample across all seven
 themes side by side — the visual menu. When someone wants to see or compare the
 themes, open `Catalog.html` in a browser (or send the file). Keep it in sync when
 themes are added or changed (see `Workflows/AddTheme.md`).
@@ -91,7 +93,8 @@ themes are added or changed (see `Workflows/AddTheme.md`).
 The Render pipeline applies each theme's **core aesthetic automatically** to the
 content model — synthwave's grid and sun, terminal's CRT layer plus vim statusbar
 and title cursor, manga's ink panels and halftone, brutalist's hard shadows and
-striped rules, sumi's washi and ensō and tate-gaki, coffee's kraft grain and serif.
+striped rules, sumi's washi and ensō and tate-gaki, coffee's kraft grain and serif,
+and dieselpunk's riveted brass plates and amber power-bar.
 A few catalog flourishes are **hand-built showcase decorations** (the brutalist
 marquee, the manga ドン! SFX, the coffee roast meter), shown to sell the vibe — they
 are not emitted by `template.html`. To get coffee flavor pills or synthwave tags in
@@ -161,7 +164,7 @@ User: "summarize this video ... then make an HTML in synthwave style"
 ```
 User: "glaze this summary"
 → Render: the content is clear, but there's no --style
-→ ask which of the six themes; never silently pick
+→ ask which of the seven themes; never silently pick
 → assemble + verify + deliver
 ```
 

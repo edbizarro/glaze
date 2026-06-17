@@ -6,7 +6,7 @@
 <title>Glaze — Theme Catalog</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bangers&family=Comic+Neue:wght@400;700&family=DM+Serif+Display&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Monoton&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Shippori+Mincho:wght@500;700;800&family=Space+Mono:wght@400;700&family=VT323&family=Zen+Old+Mincho:wght@400;600;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bangers&family=Cinzel:wght@500;700;900&family=Comic+Neue:wght@400;700&family=DM+Serif+Display&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Monoton&family=Orbitron:wght@500;700;900&family=Oswald:wght@300;400;600&family=Rajdhani:wght@500;600;700&family=Shippori+Mincho:wght@500;700;800&family=Space+Mono:wght@400;700&family=Special+Elite&family=VT323&family=Zen+Old+Mincho:wght@400;600;900&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   :root{--shell-bg:#0c0c10;--shell-2:#15151c;--shell-ink:#ececf3;--shell-dim:#9494a6;--shell-line:#26262f;--accent:#8b6cff}
@@ -193,6 +193,24 @@
   .theme-coffee .s-quote cite{color:#8a5a2b;font-style:normal;font-weight:600;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em}
   .theme-coffee .stamp{position:absolute;bottom:20px;right:22px;z-index:3;width:62px;height:62px;border-radius:50%;border:2px dashed #8a5a2b;color:#8a5a2b;
     display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Space Mono',monospace;font-weight:700;font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-9deg);line-height:1.25}
+
+  /* ===== dieselpunk ===== */
+  .theme-dieselpunk{background:radial-gradient(circle at 50% -10%,#3a2814 0%,transparent 55%),linear-gradient(180deg,#1a120b,#140d07)}
+  .theme-dieselpunk::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;box-shadow:inset 0 0 140px 40px rgba(10,5,2,.7);
+    background:repeating-linear-gradient(115deg,rgba(240,207,138,.03) 0 2px,transparent 2px 7px)}
+  .theme-dieselpunk .sample{padding:26px 28px;gap:13px}
+  .theme-dieselpunk .s-eyebrow{font-family:'Special Elite',monospace;color:#ffb347;letter-spacing:.36em;font-size:.66rem;text-transform:uppercase;opacity:.88}
+  .theme-dieselpunk .s-title{font-family:'Cinzel',serif;font-weight:900;font-size:2.1rem;color:#f0cf8a;letter-spacing:.06em;line-height:1.04;text-shadow:0 2px 0 #5a3c18,0 0 26px rgba(255,179,71,.25)}
+  .theme-dieselpunk .gauge{height:9px;background:#160f08;border:1px solid #5a4225;border-radius:6px;overflow:hidden}
+  .theme-dieselpunk .gauge i{display:block;height:100%;width:68%;background:linear-gradient(90deg,#a9622f,#ffb347);box-shadow:0 0 10px rgba(255,179,71,.5)}
+  .theme-dieselpunk .s-points{gap:11px}
+  .theme-dieselpunk .s-points li{font-family:'Oswald',sans-serif;font-weight:300;color:#e8d6b0;font-size:.92rem;padding-left:22px;position:relative}
+  .theme-dieselpunk .s-points li::before{content:"";position:absolute;left:2px;top:.5em;width:8px;height:8px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#f0cf8a,#7a5326 70%,#2a1b0c);box-shadow:0 1px 2px rgba(0,0,0,.6),0 0 8px rgba(255,179,71,.3)}
+  .theme-dieselpunk .s-quote{font-family:'Cinzel',serif;font-size:.98rem;color:#e8d6b0;border:1px solid #5a4225;border-left:4px solid #ffb347;border-radius:3px;padding:11px 14px;margin-top:auto;background:linear-gradient(160deg,#241811,#1a120b)}
+  .theme-dieselpunk .s-quote cite{font-family:'Special Elite',monospace;color:#ffb347;font-style:normal;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+  .theme-dieselpunk .stamp{position:absolute;bottom:20px;right:20px;z-index:3;padding:6px 13px;border:2px solid #7dff8a;color:#7dff8a;border-radius:2px;
+    font-family:'Special Elite',monospace;font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;transform:rotate(-1.4deg);box-shadow:0 0 18px rgba(125,255,138,.18);background:rgba(125,255,138,.04)}
 </style>
 </head>
 <body>
@@ -200,9 +218,9 @@
 
   <header class="masthead">
     <div class="kicker">Glaze · Theme Catalog</div>
-    <h1>Six styles, one piece of content — the <em>WOW factor</em></h1>
-    <p>Every card renders the exact same content in a different aesthetic, using the award-winning design techniques (Awwwards, Codrops, CodePen) that separate elite work from amateur — a receding 3D grid, chromatic aberration, diagonal manga panels, a real CRT layer, Japanese 間 (ma), and an editorial coffee label. Invoke Glaze and pick the skin.</p>
-    <div class="how">usage &rarr; <b>glaze &lt;content&gt; --style synthwave</b> · manga · brutalist · terminal · sumi · coffee</div>
+    <h1>Seven styles, one piece of content — the <em>WOW factor</em></h1>
+    <p>Every card renders the exact same content in a different aesthetic, using the award-winning design techniques (Awwwards, Codrops, CodePen) that separate elite work from amateur — a receding 3D grid, chromatic aberration, diagonal manga panels, a real CRT layer, Japanese 間 (ma), an editorial coffee label, and riveted dieselpunk brass. Invoke Glaze and pick the skin.</p>
+    <div class="how">usage &rarr; <b>glaze &lt;content&gt; --style synthwave</b> · manga · brutalist · terminal · sumi · coffee · dieselpunk</div>
   </header>
 
   <div class="grid">
@@ -214,7 +232,7 @@
         <div class="sun"></div><div class="floor"></div>
         <div class="sample">
           <div class="s-eyebrow">one input</div>
-          <h2 class="s-title">Six skins</h2>
+          <h2 class="s-title">Seven skins</h2>
           <ul class="s-points">
             <li>You write the content once.</li>
             <li>Glaze dresses it in the theme you pick.</li>
@@ -233,7 +251,7 @@
           <div class="mg-top">
             <span class="sfx">ドン!</span>
             <div class="s-eyebrow">one input</div>
-            <h2 class="s-title">Six<br>skins</h2>
+            <h2 class="s-title">Seven<br>skins</h2>
           </div>
           <div class="mg-bot">
             <ul class="s-points">
@@ -251,10 +269,10 @@
     <article class="tile">
       <div class="tile-head"><span class="name">Neo-Brutalist</span><span class="badge preset">preset</span><span class="num">03</span></div>
       <div class="preview theme-brutalist">
-        <div class="sticker">6<br>THEMES</div>
+        <div class="sticker">7<br>THEMES</div>
         <div class="sample">
           <div class="s-eyebrow">one input</div>
-          <h2 class="s-title">Six <span>skins</span></h2>
+          <h2 class="s-title">Seven <span>skins</span></h2>
           <ul class="s-points">
             <li>You write the content once.</li>
             <li>Glaze dresses it in the theme you pick.</li>
@@ -275,14 +293,14 @@
           <div class="winbar"><span class="dot" style="background:#f7768e"></span><span class="dot" style="background:#e0af68"></span><span class="dot" style="background:#9ece6a"></span><span class="path">~/glaze · demo.md</span></div>
           <div class="term-body">
             <div class="s-eyebrow"><b>❯</b> glaze demo.md <i>--style</i> <u>terminal</u></div>
-            <h2 class="s-title">Six skins</h2>
+            <h2 class="s-title">Seven skins</h2>
             <ul class="s-points">
               <li class="del">CSS by hand, rebuilt every output</li>
               <li class="add">content once · swappable theme</li>
             </ul>
             <blockquote class="s-quote">"Pick the skin — the content stays the same."<cite>Glaze</cite></blockquote>
           </div>
-          <div class="statusbar"><span class="mode">NORMAL</span><span class="git">  main ✗</span><span class="fill"></span><span class="enc">utf-8 · 6 themes</span></div>
+          <div class="statusbar"><span class="mode">NORMAL</span><span class="git">  main ✗</span><span class="fill"></span><span class="enc">utf-8 · 7 themes</span></div>
         </div>
       </div>
       <div class="tile-foot"><b>Your habitat, with a real CRT screen.</b> Tokyo Night, blinking cursor, vim status bar.<span class="sig">⚡ signature: CRT layer (scanline+glow+flicker) + typing + tmux bar</span></div>
@@ -297,7 +315,7 @@
         <div class="hanko">印</div>
         <div class="sample">
           <div class="s-eyebrow">one input</div>
-          <h2 class="s-title">Six skins</h2>
+          <h2 class="s-title">Seven skins</h2>
           <div class="brush"></div>
           <ul class="s-points">
             <li>You write the content once.</li>
@@ -317,7 +335,7 @@
         <div class="sample">
           <div class="label-top"><span>Glaze · demo</span><span>Single Origin</span></div>
           <div class="s-eyebrow">Tasting notes</div>
-          <h2 class="s-title">Six skins</h2>
+          <h2 class="s-title">Seven skins</h2>
           <div class="notes"><span>floral</span><span>frutado</span><span>complexo</span></div>
           <div class="meter">
             <div class="track"><span class="mark">▼</span></div>
@@ -331,6 +349,24 @@
         </div>
       </div>
       <div class="tile-foot"><b>The page is the label, not the store.</b> Tasting notes become the headline. For personal/blog content.<span class="sig">⚡ signature: notes-as-headline + roast meter + riso/kraft grain</span></div>
+    </article>
+
+    <article class="tile">
+      <div class="tile-head"><span class="name">Dieselpunk</span><span class="badge preset">preset</span><span class="num">07</span></div>
+      <div class="preview theme-dieselpunk">
+        <div class="stamp">live · v1</div>
+        <div class="sample">
+          <div class="s-eyebrow">Departamento de Síntese</div>
+          <h2 class="s-title">Seven skins</h2>
+          <div class="gauge"><i></i></div>
+          <ul class="s-points">
+            <li>You write the content once.</li>
+            <li>Glaze rivets it into a brass plate.</li>
+          </ul>
+          <blockquote class="s-quote">Pick the skin — the content stays the same.<cite>Glaze</cite></blockquote>
+        </div>
+      </div>
+      <div class="tile-foot"><b>Interwar brass and oiled steel.</b> Engraved title, amber power-bar, phosphor stamp. For bold industrial / ops content.<span class="sig">⚡ signature: riveted plates + engraved Cinzel + amber power-bar + gauges</span></div>
     </article>
 
   </div>

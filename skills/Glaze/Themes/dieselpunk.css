@@ -1,0 +1,89 @@
+/* GLAZE THEME · dieselpunk — interwar industrial: brass, copper, oiled steel,
+   amber signal-lamps and a radium-phosphor readout. Signature: riveted brass
+   plates + engraved Cinzel title + amber power-bar + gauge meters + a glowing
+   phosphor stencil stamp. Fonts: Cinzel (engraved display), Special Elite
+   (typewriter mono), Oswald (condensed body). */
+:root{
+  --dp-bg:#1a120b;--dp-panel:#2c1e12;--dp-panel2:#211609;
+  --dp-brass:#c89b4a;--dp-brass-hi:#f0cf8a;--dp-copper:#a9622f;--dp-bronze:#7a5326;
+  --dp-amber:#ffb347;--dp-ink:#e8d6b0;--dp-muted:#a48a63;--dp-phosphor:#7dff8a;--dp-rule:#5a4225;
+}
+body{font-family:'Oswald',sans-serif;font-weight:300;color:var(--dp-ink);letter-spacing:.02em;
+  background:radial-gradient(circle at 50% -10%,#3a2814 0%,transparent 55%),linear-gradient(180deg,#1a120b 0%,#140d07 100%);
+  background-attachment:fixed}
+/* brushed-steel sheen + corner vignette, full-page, never disturbs flow */
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(115deg,rgba(240,207,138,.025) 0 2px,transparent 2px 7px)}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  box-shadow:inset 0 0 200px 60px rgba(10,5,2,.7)}
+
+.eyebrow{font-family:'Special Elite',monospace;color:var(--dp-amber);letter-spacing:.42em;
+  font-size:.74rem;text-transform:uppercase;opacity:.88}
+.title{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(2.2rem,6vw,3.8rem);
+  color:var(--dp-brass-hi);letter-spacing:.06em;text-shadow:0 2px 0 #5a3c18,0 0 26px rgba(255,179,71,.25)}
+.title em{font-style:normal;color:var(--dp-amber)}
+.deck{font-family:'Oswald',sans-serif;font-weight:300;color:var(--dp-muted);font-size:1.05rem;
+  letter-spacing:.04em;border-left:3px solid var(--dp-copper);padding-left:16px}
+.chip{font-family:'Special Elite',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:4px 11px;border-radius:2px;border:1px solid var(--dp-brass);color:var(--dp-brass);
+  background:rgba(200,155,74,.05);box-shadow:inset 0 1px 0 rgba(240,207,138,.12)}
+
+/* riveted brass plate: gradient body + 4 corner rivet bolts via radial-gradients */
+.block{background:
+    radial-gradient(circle at 12px 12px,var(--dp-brass-hi) 0 1.4px,var(--dp-bronze) 1.4px 3px,transparent 3.4px),
+    radial-gradient(circle at calc(100% - 12px) 12px,var(--dp-brass-hi) 0 1.4px,var(--dp-bronze) 1.4px 3px,transparent 3.4px),
+    radial-gradient(circle at 12px calc(100% - 12px),var(--dp-brass-hi) 0 1.4px,var(--dp-bronze) 1.4px 3px,transparent 3.4px),
+    radial-gradient(circle at calc(100% - 12px) calc(100% - 12px),var(--dp-brass-hi) 0 1.4px,var(--dp-bronze) 1.4px 3px,transparent 3.4px),
+    linear-gradient(160deg,#2c1e12,#211609);
+  border:1.5px solid var(--dp-rule);border-radius:4px;position:relative;
+  box-shadow:inset 0 1px 0 rgba(240,207,138,.06),0 8px 24px rgba(0,0,0,.45)}
+/* amber→copper power-bar down the left edge */
+.block::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:4px;border-radius:3px;
+  background:linear-gradient(var(--dp-amber),var(--dp-copper));box-shadow:0 0 12px rgba(255,179,71,.45)}
+.block > h2{font-family:'Cinzel',serif;font-weight:700;color:var(--dp-brass-hi);
+  font-size:clamp(1.15rem,3vw,1.5rem);letter-spacing:.1em;text-transform:uppercase;
+  border-bottom:1px solid var(--dp-rule);padding-bottom:10px}
+.points li{padding-left:24px;font-size:1.04rem}
+.points li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,var(--dp-brass-hi),var(--dp-bronze) 70%,#2a1b0c);
+  box-shadow:0 1px 2px rgba(0,0,0,.6),0 0 8px rgba(255,179,71,.3)}
+code{font-family:'Special Elite',monospace;background:#160f08;color:var(--dp-brass-hi);
+  padding:1px 7px;border-radius:3px;border:1px solid var(--dp-rule);font-size:.86em}
+
+.quote{font-family:'Cinzel',serif;color:var(--dp-ink);font-size:1.1rem;
+  border:1px solid var(--dp-rule);border-left:4px solid var(--dp-amber);border-radius:3px;
+  padding:14px 18px;background:linear-gradient(160deg,#241811,#1a120b);box-shadow:inset 0 0 28px rgba(0,0,0,.4)}
+.quote cite{font-family:'Special Elite',monospace;color:var(--dp-amber);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+
+/* takeaway = glowing phosphor stencil stamp */
+.takeaway{border:2px solid var(--dp-phosphor);border-radius:3px;background:rgba(125,255,138,.04);
+  box-shadow:0 0 22px rgba(125,255,138,.16),inset 0 0 30px rgba(125,255,138,.05);transform:rotate(-.8deg)}
+.takeaway .lbl{font-family:'Special Elite',monospace;color:var(--dp-phosphor);
+  font-size:.72rem;letter-spacing:.28em;text-transform:uppercase}
+.takeaway p{font-family:'Cinzel',serif;font-weight:700;font-size:1.5rem;color:var(--dp-brass-hi);
+  text-shadow:0 0 18px rgba(255,179,71,.3)}
+
+.twomin li{padding-left:28px;font-size:1.04rem}
+.twomin li::before{content:"»";position:absolute;left:0;color:var(--dp-amber);font-weight:600}
+.refs li{padding-left:20px;color:var(--dp-muted)}
+.refs li::before{content:"◆";position:absolute;left:0;top:2px;color:var(--dp-brass);font-size:.7rem}
+.refs strong{font-family:'Special Elite',monospace;color:var(--dp-brass-hi);font-weight:400}
+
+/* divider = tapering brass rule with a central glowing boss */
+hr.rule{height:2px;background:
+    radial-gradient(circle,var(--dp-amber) 0 3px,var(--dp-brass) 3px 5px,transparent 5px) center/14px 14px no-repeat,
+    linear-gradient(90deg,transparent,var(--dp-brass) 18%,var(--dp-brass) 82%,transparent);
+  box-shadow:0 0 10px rgba(255,179,71,.2)}
+
+.glaze-foot{border-top:1px solid var(--dp-rule);font-family:'Special Elite',monospace;
+  color:var(--dp-muted);font-size:.82rem;letter-spacing:.1em;text-align:center}
+.glaze-foot .sig{color:var(--dp-brass);letter-spacing:.3em}
+.classification{font-family:'Special Elite',monospace;border:2px solid var(--dp-phosphor);color:var(--dp-phosphor);
+  padding:3px 14px;border-radius:2px;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;
+  transform:rotate(-1.2deg);box-shadow:0 0 14px rgba(125,255,138,.18)}
+
+@media (max-width:640px){
+  .eyebrow{letter-spacing:.28em}
+  .title{letter-spacing:.03em}
+  .takeaway,.classification{transform:none}
+}
