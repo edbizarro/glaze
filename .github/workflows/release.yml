@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  version-consistency:
+    name: Version consistency (plugin.json == tag == CHANGELOG)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check versions align
+        run: |
+          set -euo pipefail
+          PV=$(jq -r .version .claude-plugin/plugin.json)
+          TAG="${GITHUB_REF_NAME#v}"
+          CL=$(grep -oE '## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+          echo "plugin.json=$PV  tag=$TAG  changelog=$CL"
+          [ "$PV" = "$TAG" ] || { echo "::error::plugin.json ($PV) != tag ($TAG) — bump plugin.json before tagging"; exit 1; }
+          [ "$PV" = "$CL" ]  || { echo "::error::plugin.json ($PV) != CHANGELOG top entry ($CL)"; exit 1; }
+          echo "✓ versions aligned at $PV"

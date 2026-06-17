@@ -1,6 +1,10 @@
+# Dependencies (dev/CI tooling only — the skill itself ships zero-dependency)
+node_modules/
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db
 *~
 .idea/
 .vscode/
+reports/
