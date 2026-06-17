@@ -211,6 +211,27 @@
   .theme-dieselpunk .s-quote cite{font-family:'Special Elite',monospace;color:#ffb347;font-style:normal;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
   .theme-dieselpunk .stamp{position:absolute;bottom:20px;right:20px;z-index:3;padding:6px 13px;border:2px solid #7dff8a;color:#7dff8a;border-radius:2px;
     font-family:'Special Elite',monospace;font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;transform:rotate(-1.4deg);box-shadow:0 0 18px rgba(125,255,138,.18);background:rgba(125,255,138,.04)}
+
+  /* ===== neonops — dark ops-HUD: greebled cells, hazard stripe, scanlines, magenta signal ===== */
+  .theme-neonops{background:#000}
+  .theme-neonops::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background:radial-gradient(circle,rgba(255,255,255,.03) 1px,transparent 1px) 0 0/9px 9px}
+  .theme-neonops::after{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+    background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(255,255,255,.03) 2px 4px)}
+  .theme-neonops .sample{padding:26px 28px;gap:13px}
+  .theme-neonops .bracket{position:absolute;width:16px;height:16px;z-index:3}
+  .theme-neonops .bracket.tl{top:14px;left:14px;border-top:2px solid #d4239e;border-left:2px solid #d4239e}
+  .theme-neonops .bracket.br{bottom:14px;right:14px;border-bottom:2px solid #d4239e;border-right:2px solid #d4239e}
+  .theme-neonops .s-eyebrow{font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:.28em;font-size:.66rem;color:#d4239e;text-transform:uppercase}
+  .theme-neonops .s-title{font-family:'Archivo Black',sans-serif;font-size:2.4rem;line-height:.86;color:#fff;text-transform:uppercase;letter-spacing:-.03em;text-shadow:0 0 30px rgba(212,35,158,.4)}
+  .theme-neonops .s-title span{color:#d4239e}
+  .theme-neonops .hazard{height:14px;margin:2px 0;background:repeating-linear-gradient(-45deg,#d4239e 0 7px,transparent 7px 14px);animation:no-march 1s linear infinite}
+  @keyframes no-march{to{background-position:14px 14px}}
+  .theme-neonops .s-points{gap:9px}
+  .theme-neonops .s-points li{font-family:'Inter',sans-serif;color:#e9e9ee;font-size:.9rem;padding-left:22px;position:relative}
+  .theme-neonops .s-points li::before{content:"";position:absolute;left:2px;top:.5em;width:8px;height:8px;border-left:2px solid #d4239e;border-bottom:2px solid #d4239e;transform:rotate(-45deg)}
+  .theme-neonops .s-quote{font-family:'JetBrains Mono',monospace;font-size:.84rem;color:#f3dcec;border:1px dashed #d4239e;background:rgba(212,35,158,.05);padding:11px 14px;margin-top:auto}
+  .theme-neonops .s-quote cite{font-family:'JetBrains Mono',monospace;color:#d4239e;font-style:normal;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -218,9 +239,9 @@
 
   <header class="masthead">
     <div class="kicker">Glaze · Theme Catalog</div>
-    <h1>Seven styles, one piece of content — the <em>WOW factor</em></h1>
-    <p>Every card renders the exact same content in a different aesthetic, using the award-winning design techniques (Awwwards, Codrops, CodePen) that separate elite work from amateur — a receding 3D grid, chromatic aberration, diagonal manga panels, a real CRT layer, Japanese 間 (ma), an editorial coffee label, and riveted dieselpunk brass. Invoke Glaze and pick the skin.</p>
-    <div class="how">usage &rarr; <b>glaze &lt;content&gt; --style synthwave</b> · manga · brutalist · terminal · sumi · coffee · dieselpunk</div>
+    <h1>Eight styles, one piece of content — the <em>WOW factor</em></h1>
+    <p>Every card renders the exact same content in a different aesthetic, using the award-winning design techniques (Awwwards, Codrops, CodePen) that separate elite work from amateur — a receding 3D grid, chromatic aberration, diagonal manga panels, a real CRT layer, Japanese 間 (ma), an editorial coffee label, riveted dieselpunk brass, and a dark neonops ops-HUD. Invoke Glaze and pick the skin.</p>
+    <div class="how">usage &rarr; <b>glaze &lt;content&gt; --style synthwave</b> · manga · brutalist · terminal · sumi · coffee · dieselpunk · neonops</div>
   </header>
 
   <div class="grid">
@@ -232,7 +253,7 @@
         <div class="sun"></div><div class="floor"></div>
         <div class="sample">
           <div class="s-eyebrow">one input</div>
-          <h2 class="s-title">Seven skins</h2>
+          <h2 class="s-title">Eight skins</h2>
           <ul class="s-points">
             <li>You write the content once.</li>
             <li>Glaze dresses it in the theme you pick.</li>
@@ -251,7 +272,7 @@
           <div class="mg-top">
             <span class="sfx">ドン!</span>
             <div class="s-eyebrow">one input</div>
-            <h2 class="s-title">Seven<br>skins</h2>
+            <h2 class="s-title">Eight<br>skins</h2>
           </div>
           <div class="mg-bot">
             <ul class="s-points">
@@ -269,10 +290,10 @@
     <article class="tile">
       <div class="tile-head"><span class="name">Neo-Brutalist</span><span class="badge preset">preset</span><span class="num">03</span></div>
       <div class="preview theme-brutalist">
-        <div class="sticker">7<br>THEMES</div>
+        <div class="sticker">8<br>THEMES</div>
         <div class="sample">
           <div class="s-eyebrow">one input</div>
-          <h2 class="s-title">Seven <span>skins</span></h2>
+          <h2 class="s-title">Eight <span>skins</span></h2>
           <ul class="s-points">
             <li>You write the content once.</li>
             <li>Glaze dresses it in the theme you pick.</li>
@@ -293,14 +314,14 @@
           <div class="winbar"><span class="dot" style="background:#f7768e"></span><span class="dot" style="background:#e0af68"></span><span class="dot" style="background:#9ece6a"></span><span class="path">~/glaze · demo.md</span></div>
           <div class="term-body">
             <div class="s-eyebrow"><b>❯</b> glaze demo.md <i>--style</i> <u>terminal</u></div>
-            <h2 class="s-title">Seven skins</h2>
+            <h2 class="s-title">Eight skins</h2>
             <ul class="s-points">
               <li class="del">CSS by hand, rebuilt every output</li>
               <li class="add">content once · swappable theme</li>
             </ul>
             <blockquote class="s-quote">"Pick the skin — the content stays the same."<cite>Glaze</cite></blockquote>
           </div>
-          <div class="statusbar"><span class="mode">NORMAL</span><span class="git">  main ✗</span><span class="fill"></span><span class="enc">utf-8 · 7 themes</span></div>
+          <div class="statusbar"><span class="mode">NORMAL</span><span class="git">  main ✗</span><span class="fill"></span><span class="enc">utf-8 · 8 themes</span></div>
         </div>
       </div>
       <div class="tile-foot"><b>Your habitat, with a real CRT screen.</b> Tokyo Night, blinking cursor, vim status bar.<span class="sig">⚡ signature: CRT layer (scanline+glow+flicker) + typing + tmux bar</span></div>
@@ -315,7 +336,7 @@
         <div class="hanko">印</div>
         <div class="sample">
           <div class="s-eyebrow">one input</div>
-          <h2 class="s-title">Seven skins</h2>
+          <h2 class="s-title">Eight skins</h2>
           <div class="brush"></div>
           <ul class="s-points">
             <li>You write the content once.</li>
@@ -335,7 +356,7 @@
         <div class="sample">
           <div class="label-top"><span>Glaze · demo</span><span>Single Origin</span></div>
           <div class="s-eyebrow">Tasting notes</div>
-          <h2 class="s-title">Seven skins</h2>
+          <h2 class="s-title">Eight skins</h2>
           <div class="notes"><span>floral</span><span>frutado</span><span>complexo</span></div>
           <div class="meter">
             <div class="track"><span class="mark">▼</span></div>
@@ -357,7 +378,7 @@
         <div class="stamp">live · v1</div>
         <div class="sample">
           <div class="s-eyebrow">Departamento de Síntese</div>
-          <h2 class="s-title">Seven skins</h2>
+          <h2 class="s-title">Eight skins</h2>
           <div class="gauge"><i></i></div>
           <ul class="s-points">
             <li>You write the content once.</li>
@@ -367,6 +388,25 @@
         </div>
       </div>
       <div class="tile-foot"><b>Interwar brass and oiled steel.</b> Engraved title, amber power-bar, phosphor stamp. For bold industrial / ops content.<span class="sig">⚡ signature: riveted plates + engraved Cinzel + amber power-bar + gauges</span></div>
+    </article>
+
+    <!-- 08 NEONOPS -->
+    <article class="tile">
+      <div class="tile-head"><span class="name">NeonOps / Ops-HUD</span><span class="badge preset">preset</span><span class="num">08</span></div>
+      <div class="preview theme-neonops">
+        <div class="bracket tl"></div><div class="bracket br"></div>
+        <div class="sample">
+          <div class="s-eyebrow">DATAOPS // BUILD 08</div>
+          <h2 class="s-title">Eight <span>skins</span></h2>
+          <div class="hazard"></div>
+          <ul class="s-points">
+            <li>You write the content once.</li>
+            <li>Glaze racks it into a dark ops HUD.</li>
+          </ul>
+          <blockquote class="s-quote">Pick the skin — the content stays the same.<cite>SYS:OK</cite></blockquote>
+        </div>
+      </div>
+      <div class="tile-foot"><b>Dark Designers-Republic ops dashboard.</b> Corner brackets, hazard stripes, magenta signal. For dashboards, ops, data.<span class="sig">⚡ signature: greebled cells + marching hazard stripe + scanlines + magenta HUD</span></div>
     </article>
 
   </div>

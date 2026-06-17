@@ -5,26 +5,26 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://claude.com/claude-code"><img src="https://img.shields.io/badge/Claude%20Code-plugin-8A63D2" alt="Claude Code plugin"></a>
   <img src="https://img.shields.io/badge/runtime%20deps-zero-brightgreen" alt="runtime deps: zero">
-  <img src="https://img.shields.io/badge/themes-7-ff6ac1" alt="themes: 7">
+  <img src="https://img.shields.io/badge/themes-8-ff6ac1" alt="themes: 8">
 </p>
 
 **Turn any text output — a plan, a report, a summary, release notes — into a
 beautiful, self-contained themed HTML page in one step.**
 
 You already have the content. Glaze *skins* it: it maps your text onto a fixed
-structure, applies one of seven award-grade visual themes, and hands back a single
+structure, applies one of eight award-grade visual themes, and hands back a single
 standalone HTML file you can send, open, or publish anywhere. No build step, no JS
 framework, nothing to install at render time. Glaze is a
 [Claude Code](https://claude.com/claude-code) skill — it restyles content, it never
 generates or rewrites it.
 
-[Themes](#the-seven-themes) · [What it is](#what-it-is-and-isnt) ·
+[Themes](#the-eight-themes) · [What it is](#what-it-is-and-isnt) ·
 [Install](#install) · [Usage](#usage) · [For coding agents](#for-coding-agents) ·
 [Add a theme](#add-your-own-theme) · [Develop](#development)
 
-## The seven themes
+## The eight themes
 
-Same content, seven skins. Each theme is one self-contained CSS file — no build
+Same content, eight skins. Each theme is one self-contained CSS file — no build
 step, no JS framework.
 
 |  |  |
@@ -32,7 +32,7 @@ step, no JS framework.
 | ![synthwave theme](assets/themes/synthwave.png)<br>**`synthwave`** — neon outrun 80s | ![manga theme](assets/themes/manga.png)<br>**`manga`** — comic / anime page |
 | ![brutalist theme](assets/themes/brutalist.png)<br>**`brutalist`** — hard offset shadows | ![terminal theme](assets/themes/terminal.png)<br>**`terminal`** — CRT / TUI Tokyo Night |
 | ![sumi theme](assets/themes/sumi.png)<br>**`sumi`** — sumi-e / wabi-sabi | ![coffee theme](assets/themes/coffee.png)<br>**`coffee`** — specialty roaster label |
-| ![dieselpunk theme](assets/themes/dieselpunk.png)<br>**`dieselpunk`** — interwar brass & oiled steel | |
+| ![dieselpunk theme](assets/themes/dieselpunk.png)<br>**`dieselpunk`** — interwar brass & oiled steel | ![neonops theme](assets/themes/neonops.png)<br>**`neonops`** — dark ops-HUD / Wipeout |
 
 Or open [`skills/Glaze/Catalog.html`](skills/Glaze/Catalog.html) in a browser to
 see them rendered live, side by side.
@@ -59,6 +59,7 @@ see them rendered live, side by side.
 | `sumi` | sumi-e / wabi-sabi | 間 ma + ensō + tate-gaki + hanko seal | calm, reflective, sophisticated |
 | `coffee` | specialty roaster label | tasting-notes headline + roast meter + kraft grain | personal, blog, editorial |
 | `dieselpunk` | interwar brass & oiled steel | riveted brass plates + engraved title + amber power-bar + gauges + phosphor stamp | bold industrial, ops, retro-futurist |
+| `neonops` | dark ops-HUD (Designers-Republic / Wipeout) | corner-bracketed cells + dot-matrix + marching hazard stripe + scanlines + magenta signal + blinking sys cursor | dashboards, ops, status reports, data |
 
 ## Install
 
@@ -82,16 +83,17 @@ glaze this summary --style synthwave
 
 Or describe it in plain language — "make this report pretty in the coffee theme",
 "render the plan as a terminal-themed page". If you don't name a theme, Claude
-asks which of the seven you want.
+asks which of the eight you want.
 
 ```
-glaze <content-or-reference> --style <synthwave|manga|brutalist|terminal|sumi|coffee|dieselpunk>
+glaze <content-or-reference> --style <synthwave|manga|brutalist|terminal|sumi|coffee|dieselpunk|neonops>
 ```
 
 - `<content>` can be pasted text, a file path, or the previous message.
 - `--style random` picks one at random.
 - Aliases: `vaporwave`→synthwave, `anime`→manga, `neo`→brutalist, `crt`/`tui`→terminal,
-  `wabi`→sumi, `cafe`→coffee, `diesel`/`steampunk`/`brass`→dieselpunk.
+  `wabi`→sumi, `cafe`→coffee, `diesel`/`steampunk`/`brass`→dieselpunk,
+  `neon`/`ops`/`dataops`/`hud`/`wipeout`→neonops.
 
 ## For coding agents
 

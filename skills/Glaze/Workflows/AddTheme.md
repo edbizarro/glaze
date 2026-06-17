@@ -1,37 +1,82 @@
 # Workflow: AddTheme — add a new theme to the library
 
-Adding a theme is one self-contained CSS file. No other file needs to change
-(the theme list in SKILL.md is documentation; update it too).
+A theme is **one** self-contained CSS file — but shipping it *fully registered* touches
+**nine** files. The theme count ("seven", "eight", …) and the theme-name list are hardcoded
+in many places; miss one and the theme ships half-registered. Work the checklist in §4 top
+to bottom and the grep gates in §6 will pass.
+
+> Conventions in this repo (read once): `Themes/_base.css` owns the theme-agnostic content
+> model; each theme overrides color, type, and decoration only. The live PAI skill
+> `~/.claude/skills/Glaze` is a **symlink** to `skills/Glaze/` here — edit the repo, never the
+> live copy. `CHANGELOG.md` is **release-please-managed** — do NOT hand-edit it; the
+> Conventional Commit (`feat: add <name> theme`) drives the next release entry.
 
 ## 1. Research the aesthetic (for the WOW factor)
-Before writing CSS, find what separates *elite* examples of the aesthetic from
-amateur ones. Search Awwwards / Codrops / CodePen / dribbble. Capture:
-- **The signature move** — the single defining technique (1-2 sentences).
-- 5-8 concrete, CSS-implementable techniques (each with a one-line "how").
-- An exact hex palette and a Google Fonts pairing (display + body).
-For several themes at once, fan out one research agent per aesthetic in parallel.
+Find what separates *elite* examples from amateur ones (Awwwards / Codrops / CodePen /
+dribbble). Capture: the **signature move** (1 defining technique), 5-8 CSS-implementable
+techniques (each with a one-line "how"), an exact hex palette, and a Google Fonts pairing
+(display + body). Fan out one research agent per aesthetic when adding several at once.
 
 ## 2. Write `Themes/<name>.css`
-- Style **every** content-model class (see SKILL.md): `body`, `.eyebrow`,
-  `.title`, `.deck`, `.chip`, `.block`, `.block > h2`, `.points li`, `.quote`,
-  `.quote cite`, `.takeaway`(`.lbl`,`p`), `.twomin li`, `.refs li`+`strong`,
-  `hr.rule`, `.glaze-foot`, `.classification`.
-- Put decorative full-page layers in `body::before`/`body::after` (fixed,
-  `pointer-events:none`, low z-index) so they never disturb document flow and
-  don't require extra markup.
-- Generalize for **documents**, not preview tiles: content of any length must
-  flow. Avoid fixed heights and `margin-top:auto` tricks meant for cards.
-- Keep prose legible — decoration serves the content.
-- Add the theme's Google Fonts families to the master `<link>` in `template.html`
-  (and the inline copy used by Render) if not already present.
-- Add a `@media (max-width:640px)` block if the theme uses heavy margins,
+- Style **every** content-model class: `body`, `.eyebrow`, `.title`, `.deck`, `.chip`,
+  `.block`, `.block > h2`, `.points li`, `.quote`, `.quote cite`, `.takeaway`(`.lbl`,`p`),
+  `.twomin li`, `.refs li`+`strong`, `hr.rule`, `.glaze-foot`, `.classification`.
+- Optional terminal-style diff opt-in: style `.points li.add` / `.points li.del`.
+- Decorative full-page layers go in `body::before`/`body::after` (fixed,
+  `pointer-events:none`, low z-index) so they never disturb document flow and need no extra
+  markup. Per-cell flourishes go in `.block::before`/`::after`.
+- Generalize for **documents**, not preview tiles: content of any length must flow. Avoid
+  fixed heights and `margin-top:auto` card tricks. Keep prose legible — decoration serves it.
+- Add a `@media (max-width:640px)` block if the theme uses heavy margins, bleed (`margin:… -24px`),
   rotation, or fixed decorations that need taming on phones.
 
-## 3. Register & test
-- Add a row to the theme table in `SKILL.md` and to the `--style` list +
-  aliases.
-- Update `Catalog.html`: add a tile for the new theme so it shows in the gallery.
-- Smoke-test: glaze a real multi-section piece of content with the new theme via
-  `Workflows/Render.md` and verify in a browser — signature elements present,
-  fonts loaded, prose legible, mobile collapses cleanly.
-- If a screenshot tool stalls on animations, freeze them first (see Render.md step 4).
+## 3. Fonts
+Use families **already in `template.html`'s master `<link>`** if you can (Inter, JetBrains
+Mono, Archivo Black, Anton, Oswald, Space Mono, Cinzel, Fraunces, Shippori/Zen Mincho,
+Orbitron, Rajdhani, Monoton, VT323, Bangers, Comic Neue, Special Elite, DM Serif Display).
+Only if you need a new family: add it to the master `<link>` in **`template.html`** AND to the
+identical `<link>` in **`Catalog.html`**. If you reused existing fonts, both files stay untouched.
+
+## 4. THE COMPLETE FILE CHECKLIST (registration)
+Replace `<name>` with the theme slug (lowercase, one word, e.g. `neonops`). Every box must be ticked.
+
+| # | File | What to change |
+|---|------|----------------|
+| 1 | `skills/Glaze/Themes/<name>.css` | **NEW** — the theme (§2). |
+| 2 | `skills/Glaze/template.html` | Fonts master `<link>` — **only if** §3 needs a new family. |
+| 3 | `skills/Glaze/SKILL.md` — frontmatter `description` | (a) bump the count word ("Ships an **eight**-theme library …"); (b) add `· <name>` to the `(synthwave · … · dieselpunk)` list; (c) add `/<name>` to the `synthwave/…/dieselpunk HTML` USE-WHEN list. |
+| 4 | `skills/Glaze/SKILL.md` — body | (a) add a row to the **Theme library** table; (b) add `` `<name>` `` to the Invocation `--style` list; (c) add the alias line `…→<name>`; (d) "offer the **eight**" (count word); (e) Catalog para "across all **eight** themes"; (f) Example 2 "which of the **eight** themes". |
+| 5 | `skills/Glaze/Workflows/Render.md` | "ask which of the **eight**" (count word). |
+| 6 | `skills/Glaze/Catalog.html` | (a) add a `.theme-<name>` `<style>` block (styles the **catalog** preview classes `.s-eyebrow`/`.s-title`/`.s-points li`/`.s-quote`); (b) add a `<article class="tile">` in the grid; (c) masthead "**Eight** styles…"; (d) bump every "Seven/N skins" sample heading + any "N themes" badge so no stale count remains. |
+| 7 | `README.md` | (a) badge `themes-N`; (b) "one of **eight** … themes"; (c) nav anchor `#the-eight-themes` **and** the `## The eight themes` heading **and** "Same content, **eight** skins"; (d) gallery table — add a tile `![<name> theme](assets/themes/<name>.png)`; (e) **Theme reference** table row; (f) "asks which of the **eight**"; (g) the `--style <…|<name>>` list; (h) the aliases line. |
+| 8 | `.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json` | bump "**Eight** award-grade … themes" in both descriptions. |
+| 9 | `assets/themes/<name>.png` | **NEW** screenshot asset — see §5 (this is the one that gets forgotten). |
+
+> Do NOT touch `CHANGELOG.md` (release-please) or `package.json`/version (release-please).
+
+## 5. The gallery screenshot (`assets/themes/<name>.png`) — content MUST match the others
+The README gallery is a **side-by-side comparison**, so every tile must render the **identical
+canonical demo content** — never bespoke/themed copy. (This has been the #1 repeated mistake.)
+
+Canonical demo body (verbatim — same as synthwave…dieselpunk):
+- eyebrow `CLAUDE CODE · SKILL` · title `Glaze your <em>output</em>`
+- deck `Turn any plan, report, or summary you already have into a polished, self-contained themed HTML page. One file, zero build step.`
+- chips `HTML` `CSS` `zero-deps`
+- block `What it does` → points: "Skins content you already have — it never rewrites your words." · "Emits one standalone file: pure HTML + CSS, no JS framework." · "Fonts load from Google Fonts; offline it falls back to system fonts."
+- quote `Same content, six skins — pick the one that fits the moment.` cite `the Glaze catalog`
+- takeaway lbl `The point` / `One file. Send it anywhere.`
+
+Render that through `template.html` (inline `_base.css` + `<name>.css`), open in a **real
+browser**, freeze animations (`*,*::before,*::after{animation:none !important}`), screenshot,
+then crop/resize to **1400×947** at the others' aspect:
+`convert shot.png -crop <0.62*W>x<0.62*W*947/1400>+<center>+0 +repage -resize '1400x947!' assets/themes/<name>.png`.
+**View the PNG** and confirm content + framing match the other assets before committing.
+
+## 6. Test, lint, verify (gates — all must pass)
+- `bun run lint` → stylelint (themes) + html-validate (template + Catalog) green.
+- `rg -n "seven|themes-7" README.md skills .claude-plugin` returns **nothing** (only the
+  historical line in `CHANGELOG.md` may remain). Stale counts = failed registration.
+- Smoke-test: glaze a real multi-section piece with `--style <name>` via `Workflows/Render.md`
+  and verify in a browser — signature elements present, fonts loaded, prose legible, mobile
+  (≤640px) collapses cleanly. Freeze animations first if a screenshot tool stalls.
+- Open `Catalog.html` and confirm the new tile renders alongside the others.

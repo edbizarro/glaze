@@ -1,0 +1,95 @@
+/* GLAZE THEME · neonops — DATAOPS // ops-HUD (Designers-Republic / Wipeout vibe).
+   Signature: full-dark cells with corner brackets + dot-matrix texture, a marching
+   magenta/black hazard stripe, CRT scanlines, mono "greeble" labels, blinking sys cursor.
+   Fonts: Archivo Black (display), Inter (body), JetBrains Mono (labels/mono). */
+body{
+  --neon-bg:#000;--neon-surface:#0a0a0a;--neon-ink:#fff;--neon-signal:#d4239e;
+  --neon-glow:rgba(212,35,158,.25);--neon-dim:rgba(255,255,255,.5);
+  --neon-faint:rgba(255,255,255,.2);--neon-line:rgba(255,255,255,.12);
+  font-family:'Inter',system-ui,sans-serif;font-weight:400;line-height:1.5;
+  color:var(--neon-ink);background:var(--neon-bg)}
+/* CRT scanline overlay */
+body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(255,255,255,.02) 2px 4px)}
+/* faint dot-matrix field */
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background:radial-gradient(circle,rgba(255,255,255,.025) 1px,transparent 1px) 0 0/9px 9px}
+
+.glaze{max-width:920px}
+
+/* HEADER — corner bracket + tick-mark ruler */
+.glaze-head{position:relative;padding:18px 0 22px}
+.glaze-head::before{content:"";position:absolute;top:0;left:-10px;width:18px;height:18px;
+  border-top:2px solid var(--neon-signal);border-left:2px solid var(--neon-signal);opacity:.6}
+.glaze-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;opacity:.4;
+  background:linear-gradient(var(--neon-signal),var(--neon-signal)) 0 100%/100% 1px no-repeat,
+    repeating-linear-gradient(90deg,var(--neon-signal) 0 1px,transparent 1px 24px) 0 0/100% 6px no-repeat}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.74rem;
+  letter-spacing:.28em;color:var(--neon-signal)}
+.title{font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;
+  font-size:clamp(2.6rem,9vw,5.2rem);letter-spacing:-.03em;line-height:.86;
+  color:var(--neon-ink);text-shadow:0 0 40px var(--neon-glow)}
+.title em{font-style:normal;color:var(--neon-signal)}
+.deck{font-family:'JetBrains Mono',monospace;font-size:.92rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--neon-dim);max-width:640px}
+.meta{margin-top:20px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--neon-signal);
+  border:1px solid var(--neon-signal);padding:5px 11px}
+
+/* BLOCK — bordered cell, dot-matrix texture, magenta corner brackets */
+.block{position:relative;border:1px solid var(--neon-line);
+  background:radial-gradient(circle,rgba(255,255,255,.018) 1px,transparent 1px) 0 0/8px 8px,var(--neon-surface)}
+.block::before,.block::after{content:"";position:absolute;width:14px;height:14px;z-index:1;opacity:.6}
+.block::before{top:-1px;left:-1px;border-top:2px solid var(--neon-signal);border-left:2px solid var(--neon-signal)}
+.block::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--neon-signal);border-right:2px solid var(--neon-signal)}
+.block > h2{font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;
+  font-size:clamp(1.2rem,3.4vw,1.7rem);letter-spacing:-.02em;line-height:.95;color:var(--neon-ink);
+  padding-bottom:12px;border-bottom:3px solid var(--neon-signal)}
+.points li{font-family:'Inter',sans-serif;font-size:1.02rem;line-height:1.5;padding-left:26px;color:#e9e9ee}
+.points li::before{content:"";position:absolute;left:2px;top:.5em;width:9px;height:9px;
+  border-left:2px solid var(--neon-signal);border-bottom:2px solid var(--neon-signal);transform:rotate(-45deg)}
+/* terminal-style diff opt-in */
+.points li.add::before{content:"+";left:0;top:0;border:0;transform:none;color:#3fb950;font-family:'JetBrains Mono',monospace;font-weight:700}
+.points li.del::before{content:"\2212";left:0;top:0;border:0;transform:none;color:var(--neon-signal);font-family:'JetBrains Mono',monospace;font-weight:700}
+
+.quote{border:1px dashed var(--neon-signal);background:rgba(212,35,158,.04);
+  padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:.96rem;line-height:1.55;color:#f3dcec}
+.quote cite{font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--neon-signal)}
+
+/* TAKEAWAY — centered HUD readout */
+.takeaway{position:relative;border:1px solid var(--neon-signal);background:rgba(212,35,158,.05);
+  box-shadow:0 0 24px rgba(212,35,158,.08),inset 0 0 24px rgba(212,35,158,.03)}
+.takeaway .lbl{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--neon-signal)}
+.takeaway p{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.3rem,4vw,2rem);letter-spacing:-.02em;line-height:1;color:var(--neon-ink)}
+
+.twomin li{font-family:'Inter',sans-serif;font-size:1.02rem;padding-left:30px;position:relative}
+.twomin li::before{content:"\00BB";position:absolute;left:0;color:var(--neon-signal);font-family:'JetBrains Mono',monospace;font-weight:700}
+.refs li{padding-left:24px;font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--neon-dim)}
+.refs li::before{content:"\25AA";position:absolute;left:2px;color:var(--neon-signal)}
+.refs strong{font-family:'Inter',sans-serif;font-weight:700;color:var(--neon-ink)}
+
+/* HR — marching magenta/black hazard stripe (the signature) */
+hr.rule{height:18px;margin:42px -24px;
+  background:repeating-linear-gradient(-45deg,var(--neon-signal) 0 8px,transparent 8px 16px);
+  animation:neon-march 1s linear infinite}
+@keyframes neon-march{to{background-position:16px 16px}}
+
+/* FOOTER — sys signature + blinking cursor */
+.glaze-foot{border-top:1px solid var(--neon-line);font-family:'JetBrains Mono',monospace;
+  font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--neon-faint);
+  display:flex;justify-content:space-between;align-items:center;gap:14px}
+.glaze-foot::after{content:"SYS:OK_";color:var(--neon-signal);font-weight:700;letter-spacing:.22em;
+  animation:neon-blink 1.1s steps(1) infinite}
+@keyframes neon-blink{50%{opacity:.25}}
+.classification{font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--neon-signal);border:1px solid var(--neon-signal);padding:3px 12px}
+
+@media (max-width:640px){
+  hr.rule{margin:30px -16px}
+  .title{font-size:clamp(2.2rem,12vw,3rem)}
+  .glaze-foot{flex-direction:column;gap:10px;align-items:flex-start}
+}
