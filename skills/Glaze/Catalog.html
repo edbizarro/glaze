@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glaze — Theme Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bangers&family=Comic+Neue:wght@400;700&family=DM+Serif+Display&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Monoton&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Shippori+Mincho:wght@500;700;800&family=Space+Mono:wght@400;700&family=VT323&family=Zen+Old+Mincho:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--shell-bg:#0c0c10;--shell-2:#15151c;--shell-ink:#ececf3;--shell-dim:#9494a6;--shell-line:#26262f;--accent:#8b6cff}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--shell-bg);color:var(--shell-ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+
+  .page{max-width:1240px;margin:0 auto;padding:48px 24px 110px}
+  .masthead{border-bottom:1px solid var(--shell-line);padding-bottom:28px;margin-bottom:38px}
+  .kicker{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .masthead h1{font-size:clamp(1.8rem,4.2vw,2.9rem);font-weight:800;margin:10px 0 8px;letter-spacing:-.025em;line-height:1.05}
+  .masthead h1 em{font-style:normal;background:linear-gradient(90deg,#ff4ecd,#8b6cff,#3df2ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .masthead p{color:var(--shell-dim);max-width:720px;font-size:1.02rem}
+  .masthead .how{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--shell-dim);background:var(--shell-2);border:1px solid var(--shell-line);border-radius:8px;padding:10px 14px;display:inline-block}
+  .masthead .how b{color:#a5ffd6}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+  .tile{border:1px solid var(--shell-line);border-radius:16px;overflow:hidden;background:var(--shell-2);display:flex;flex-direction:column;box-shadow:0 18px 50px rgba(0,0,0,.4)}
+  .tile-head{display:flex;align-items:center;gap:10px;padding:13px 17px;border-bottom:1px solid var(--shell-line)}
+  .tile-head .name{font-weight:700;font-size:.98rem}
+  .tile-head .num{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--shell-dim);margin-left:auto}
+  .badge{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;padding:3px 8px;border-radius:999px}
+  .badge.preset{background:rgba(139,108,255,.16);color:#cdbcff;border:1px solid rgba(139,108,255,.45)}
+  .badge.preset2{background:rgba(0,200,150,.14);color:#7df0c0;border:1px solid rgba(0,200,150,.4)}
+  .preview{flex:1;min-height:420px;position:relative;overflow:hidden;isolation:isolate}
+  .tile-foot{padding:13px 17px;border-top:1px solid var(--shell-line);font-size:.82rem;color:var(--shell-dim)}
+  .tile-foot b{color:var(--shell-ink);font-weight:600}
+  .tile-foot .sig{display:block;margin-top:5px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent)}
+
+  .sample{position:absolute;inset:0;padding:30px 28px;display:flex;flex-direction:column;gap:14px;z-index:2}
+  .s-points{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .s-quote{margin-top:auto}
+  .s-quote cite{display:block;font-style:normal;margin-top:6px;font-size:.78rem;opacity:.85}
+
+  /* =========================================================
+     01 · SYNTHWAVE — 3D grid floor, chromatic aberration, scanlines
+     ========================================================= */
+  .theme-synthwave{background:linear-gradient(180deg,#0d0221 0%,#2a0b4e 55%,#7a1f6b 80%,#ff6e27 100%)}
+  .theme-synthwave .floor{position:absolute;left:-20%;right:-20%;bottom:0;height:48%;z-index:0;
+    background-image:repeating-linear-gradient(90deg,transparent 0 calc(50% - 1px),rgba(8,217,217,.7) calc(50% - 1px) calc(50% + 1px),transparent calc(50% + 1px)),repeating-linear-gradient(0deg,rgba(247,37,133,.8) 0 2px,transparent 2px 38px);
+    background-size:6.5% 100%,100% 38px;
+    transform:perspective(180px) rotateX(76deg);transform-origin:bottom center;
+    mask-image:linear-gradient(transparent,#000 55%);animation:sw-scroll 1.6s linear infinite}
+  @keyframes sw-scroll{from{background-position-y:0,0}to{background-position-y:0,38px}}
+  .theme-synthwave .sun{position:absolute;top:34px;left:50%;transform:translateX(-50%);width:150px;height:150px;border-radius:50%;z-index:0;
+    background:linear-gradient(180deg,#ffd319 0%,#ff2e97 55%,#9d00ff 100%);
+    -webkit-mask-image:linear-gradient(#000 52%,transparent 52%),repeating-linear-gradient(0deg,#000 0 9px,transparent 9px 15px);
+    mask-image:linear-gradient(#000 52%,transparent 52%),repeating-linear-gradient(0deg,#000 0 9px,transparent 9px 15px);
+    box-shadow:0 0 50px rgba(255,46,151,.6),0 0 110px rgba(157,0,255,.4)}
+  .theme-synthwave::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+    background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.22) 2px 4px);animation:sw-flick 5s infinite}
+  @keyframes sw-flick{0%,92%,100%{opacity:.55}94%{opacity:.3}96%{opacity:.7}}
+  .theme-synthwave .s-eyebrow{font-family:'Orbitron',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.34em;color:#08d9d6;text-shadow:0 0 6px #08d9d6;text-transform:uppercase;position:relative}
+  .theme-synthwave .s-title{font-family:'Monoton',cursive;font-size:2.1rem;line-height:1.04;color:#ffe9fb;position:relative;
+    text-shadow:-2px 0 #f72585,2px 0 #08d9d6,0 0 6px #fff,0 0 14px #ff4ecd,0 0 28px #ff4ecd,0 0 44px #9d00ff;
+    animation:sw-aberr 3.5s ease-in-out infinite}
+  @keyframes sw-aberr{0%,100%{text-shadow:-2px 0 #f72585,2px 0 #08d9d6,0 0 6px #fff,0 0 14px #ff4ecd,0 0 28px #ff4ecd,0 0 44px #9d00ff}50%{text-shadow:-3px 0 #f72585,3px 0 #08d9d6,0 0 8px #fff,0 0 18px #ff4ecd,0 0 34px #ff4ecd,0 0 52px #9d00ff}}
+  .theme-synthwave .s-points li{font-family:'Rajdhani',sans-serif;font-weight:600;color:#f4e9ff;padding-left:20px;position:relative;text-shadow:0 0 8px rgba(0,0,0,.6)}
+  .theme-synthwave .s-points li::before{content:"▸";position:absolute;left:0;color:#08d9d6;text-shadow:0 0 6px #08d9d6}
+  .theme-synthwave .s-quote{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:1.05rem;color:#bdfcff;
+    border:1px solid rgba(8,217,217,.5);border-radius:8px;padding:11px 14px;background:rgba(20,5,40,.45);backdrop-filter:blur(4px);
+    box-shadow:0 0 18px rgba(8,217,217,.25),inset 0 0 20px rgba(247,37,133,.1)}
+  .theme-synthwave .s-quote cite{color:#ff8fe0}
+
+  /* =========================================================
+     02 · MANGA — broken diagonal panel grid, halftone, SFX, speed lines
+     ========================================================= */
+  .theme-manga{background:#FAF8F2}
+  .theme-manga .sample{padding:0;gap:0}
+  .theme-manga .mg-top{position:relative;flex:1.1;border-bottom:5px solid #111;overflow:hidden;padding:22px 24px;
+    clip-path:polygon(0 0,100% 0,100% 86%,0 100%)}
+  .theme-manga .mg-top::before{content:"";position:absolute;inset:0;z-index:0;
+    background:repeating-conic-gradient(from 0deg at 78% 120%,rgba(17,17,17,.16) 0deg 1.1deg,transparent 1.1deg 3.4deg);
+    -webkit-mask-image:radial-gradient(circle at 78% 120%,transparent 28%,#000 60%);mask-image:radial-gradient(circle at 78% 120%,transparent 28%,#000 60%)}
+  .theme-manga .mg-bot{position:relative;flex:1;padding:18px 24px 22px;overflow:visible;
+    background-image:radial-gradient(#111 1.4px,transparent 1.5px);background-size:7px 7px;background-color:#fff;
+    clip-path:polygon(0 14%,100% 0,100% 100%,0 100%)}
+  .theme-manga .s-eyebrow{position:relative;z-index:1;font-family:'Bangers',cursive;letter-spacing:.1em;font-size:1.05rem;color:#E5251E;transform:skewX(-7deg)}
+  .theme-manga .s-title{position:relative;z-index:1;font-family:'Bangers',cursive;font-size:2.9rem;line-height:.92;color:#FAF8F2;letter-spacing:.02em;transform:skewX(-5deg);
+    -webkit-text-stroke:2px #111;text-shadow:5px 5px 0 #111,5px 5px 0 #FFD600}
+  .theme-manga .sfx{position:absolute;top:8px;right:-4px;z-index:2;font-family:'Bangers',cursive;font-size:2rem;color:#FFD600;-webkit-text-stroke:2px #111;transform:rotate(11deg)}
+  .theme-manga .s-points{position:relative;z-index:1;gap:6px;margin-bottom:12px}
+  .theme-manga .s-points li{font-family:'Anton',sans-serif;color:#111;text-transform:uppercase;font-size:.8rem;letter-spacing:.02em;padding-left:22px;position:relative;line-height:1.25}
+  .theme-manga .s-points li::before{content:"≫";position:absolute;left:0;color:#E5251E;font-family:'Bangers'}
+  .theme-manga .s-quote{position:relative;z-index:1;background:#fff;border:3px solid #111;border-radius:16px;padding:11px 15px;
+    font-family:'Comic Neue',cursive;font-weight:700;font-size:.92rem;color:#111;margin-top:auto;box-shadow:4px 4px 0 #111}
+  .theme-manga .s-quote::after{content:"";position:absolute;bottom:-15px;left:34px;width:0;height:0;border:9px solid transparent;border-top-color:#111}
+  .theme-manga .s-quote::before{content:"";position:absolute;bottom:-9px;left:37px;width:0;height:0;border:6px solid transparent;border-top-color:#fff;z-index:1}
+  .theme-manga .s-quote cite{font-family:'Inter';font-weight:700;color:#E5251E}
+
+  /* =========================================================
+     03 · BRUTALIST — hard offset shadows, clashing blocks, marquee
+     ========================================================= */
+  .theme-brutalist{background:#FFFBEB;background-image:linear-gradient(#1a1a1a08 1px,transparent 1px),linear-gradient(90deg,#1a1a1a08 1px,transparent 1px);background-size:22px 22px}
+  .theme-brutalist .sample{padding:22px 22px 0}
+  .theme-brutalist .s-eyebrow{align-self:flex-start;background:#2D5BFF;color:#fff;font-family:'Space Mono',monospace;font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;padding:5px 11px;border:2px solid #1A1A1A;box-shadow:4px 4px 0 #1A1A1A}
+  .theme-brutalist .s-title{font-family:'Archivo Black',sans-serif;font-size:2.7rem;color:#1A1A1A;line-height:.92;letter-spacing:-.03em}
+  .theme-brutalist .s-title span{background:#FFDE00;box-shadow:0 0 0 4px #FFDE00,6px 6px 0 #1A1A1A;display:inline-block}
+  .theme-brutalist .sticker{position:absolute;top:18px;right:16px;z-index:4;background:#FF4D8D;color:#1A1A1A;font-family:'Space Mono',monospace;font-weight:700;font-size:.66rem;text-transform:uppercase;padding:8px 10px;border:2px solid #1A1A1A;box-shadow:4px 4px 0 #1A1A1A;transform:rotate(7deg);text-align:center;line-height:1.2}
+  .theme-brutalist .s-points{gap:0;margin-top:4px}
+  .theme-brutalist .s-points li{font-family:'Space Mono',monospace;font-size:.8rem;color:#1A1A1A;border-bottom:2px solid #1A1A1A;padding:9px 0}
+  .theme-brutalist .s-points li::before{content:"→ ";font-weight:700;color:#2D5BFF}
+  .theme-brutalist .s-quote{margin:14px -22px 0;border-top:3px solid #1A1A1A;border-bottom:3px solid #1A1A1A;background:#FFDE00;padding:14px 22px;font-family:'Space Mono',monospace;font-weight:700;font-size:.86rem;color:#1A1A1A}
+  .theme-brutalist .s-quote cite{text-decoration:underline;text-underline-offset:3px}
+  .theme-brutalist .marquee{position:absolute;bottom:0;left:0;right:0;z-index:3;background:#1A1A1A;color:#FFDE00;font-family:'Space Mono',monospace;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;overflow:hidden;padding:7px 0;border-top:3px solid #1A1A1A}
+  .theme-brutalist .marquee span{display:inline-block;padding-left:100%;animation:br-marq 9s linear infinite}
+  @keyframes br-marq{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+
+  /* =========================================================
+     04 · TERMINAL — CRT screen layer, phosphor glow, flicker, tmux bar
+     ========================================================= */
+  .theme-terminal{background:#1a1b26}
+  .theme-terminal .sample{padding:0;font-family:'JetBrains Mono',monospace}
+  .theme-terminal .crt{position:absolute;inset:0;z-index:5;pointer-events:none;border-radius:10px;
+    background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.28) 2px 4px);
+    box-shadow:inset 0 0 70px rgba(0,0,0,.65),inset 0 0 18px rgba(122,162,247,.12);animation:tm-flick 4.5s infinite}
+  @keyframes tm-flick{0%,94%,100%{opacity:1}95%{opacity:.93}97%{opacity:.97}}
+  .theme-terminal .winbar{display:flex;align-items:center;gap:7px;padding:9px 13px;background:#16161e;border-bottom:1px solid #2a2b3c;position:relative;z-index:2}
+  .theme-terminal .dot{width:11px;height:11px;border-radius:50%}
+  .theme-terminal .winbar .path{margin-left:8px;color:#565f89;font-size:.74rem}
+  .theme-terminal .term-body{position:relative;z-index:2;padding:15px 16px 6px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .theme-terminal .s-eyebrow{color:#565f89;font-size:.78rem}
+  .theme-terminal .s-eyebrow b{color:#9ece6a}.theme-terminal .s-eyebrow i{color:#7aa2f7;font-style:normal}.theme-terminal .s-eyebrow u{color:#bb9af7;text-decoration:none}
+  .theme-terminal .s-title{font-size:1.35rem;color:#7dcfff;font-weight:800;text-shadow:0 0 2px #7dcfff,0 0 10px rgba(125,207,255,.45);
+    white-space:nowrap;overflow:hidden;width:0;animation:tm-type 2.2s steps(13,end) .3s forwards;border-right:.5em solid #e0af68}
+  @keyframes tm-type{to{width:11ch;border-right-color:transparent}}
+  .theme-terminal .s-title::before{content:"## ";color:#ff9e64;-webkit-text-fill-color:#ff9e64}
+  .theme-terminal .s-points li{color:#c0caf5;font-size:.8rem;padding-left:18px;position:relative}
+  .theme-terminal .s-points li.add{color:#9ece6a}.theme-terminal .s-points li.add::before{content:"+";position:absolute;left:0}
+  .theme-terminal .s-points li.del{color:#f7768e}.theme-terminal .s-points li.del::before{content:"-";position:absolute;left:0}
+  .theme-terminal .s-quote{border-left:2px solid #e0af68;padding:7px 12px;color:#e0af68;font-size:.8rem;background:rgba(224,175,104,.06);margin-top:auto}
+  .theme-terminal .s-quote cite{color:#bb9af7}.theme-terminal .s-quote cite::before{content:"// "}
+  .theme-terminal .statusbar{position:relative;z-index:2;display:flex;font-size:.7rem;font-weight:700}
+  .theme-terminal .statusbar .mode{background:#7aa2f7;color:#16161e;padding:5px 11px}
+  .theme-terminal .statusbar .git{background:#283457;color:#7dcfff;padding:5px 11px}
+  .theme-terminal .statusbar .fill{flex:1;background:#1f2335}
+  .theme-terminal .statusbar .enc{background:#283457;color:#565f89;padding:5px 11px}
+
+  /* =========================================================
+     05 · SUMI-E — ma (negative space), ensō, tate-gaki, washi, hanko
+     ========================================================= */
+  .theme-sumi{background:#F5F0E8}
+  .theme-sumi::before{content:"";position:absolute;inset:0;z-index:0;mix-blend-mode:multiply;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .theme-sumi .enso{position:absolute;top:30px;right:34px;z-index:0;width:104px;height:104px;border-radius:50%;
+    border:7px solid #1A1718;border-right-color:transparent;border-bottom-color:rgba(26,23,24,.55);transform:rotate(38deg);filter:blur(.3px);opacity:.9}
+  .theme-sumi .tate{position:absolute;top:34px;left:28px;z-index:1;writing-mode:vertical-rl;text-orientation:upright;
+    font-family:'Shippori Mincho',serif;font-weight:700;font-size:1.1rem;letter-spacing:.25em;color:#1A1718;opacity:.8}
+  .theme-sumi .sample{padding:30px 34px 30px 64px;gap:18px;justify-content:center}
+  .theme-sumi .s-eyebrow{font-family:'Shippori Mincho',serif;font-weight:500;letter-spacing:.3em;font-size:.72rem;color:#B7382B;text-transform:uppercase}
+  .theme-sumi .s-title{font-family:'Shippori Mincho',serif;font-weight:800;font-size:2.1rem;color:#27221F;line-height:1.25;letter-spacing:.02em;filter:blur(.25px);text-shadow:0 0 1px rgba(39,34,31,.4)}
+  .theme-sumi .brush{width:120px;height:14px;background:#1A1718;
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14'%3E%3Cpath d='M2 8 Q30 2 60 7 T118 6 Q90 12 50 10 T2 8Z' fill='black'/%3E%3C/svg%3E");
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14'%3E%3Cpath d='M2 8 Q30 2 60 7 T118 6 Q90 12 50 10 T2 8Z' fill='black'/%3E%3C/svg%3E");-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+  .theme-sumi .s-points{gap:13px}
+  .theme-sumi .s-points li{font-family:'Zen Old Mincho',serif;color:#33312b;font-size:.92rem;line-height:1.9;padding-left:20px;position:relative}
+  .theme-sumi .s-points li::before{content:"—";position:absolute;left:0;color:#B7382B}
+  .theme-sumi .s-quote{font-family:'Shippori Mincho',serif;font-size:1.02rem;color:#1A1718;line-height:1.9;border-left:2px solid #1A1718;padding:2px 0 2px 16px;font-style:italic}
+  .theme-sumi .s-quote cite{color:#33312b;font-style:normal}
+  .theme-sumi .hanko{position:absolute;bottom:26px;right:30px;z-index:2;width:46px;height:46px;border-radius:5px;background:#D8472B;
+    display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho',serif;font-weight:800;font-size:1.25rem;color:#F5F0E8;transform:rotate(4deg);box-shadow:0 2px 8px rgba(216,71,43,.3)}
+
+  /* =========================================================
+     06 · COFFEE — editorial label, tasting notes headline, roast meter, riso grain
+     ========================================================= */
+  .theme-coffee{background:radial-gradient(at 75% 12%,#fbf2e2,transparent 55%),linear-gradient(180deg,#F3E9D8,#e6d5ba)}
+  .theme-coffee::after{content:"";position:absolute;inset:0;z-index:0;mix-blend-mode:multiply;opacity:.07;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+  .theme-coffee .sample{padding:24px 26px}
+  .theme-coffee .label-top{display:flex;justify-content:space-between;align-items:baseline;font-family:'Space Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:#8a5a2b;border-bottom:1.5px solid #b9885a;padding-bottom:8px}
+  .theme-coffee .s-eyebrow{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.26em;font-size:.66rem;color:#8a5a2b;text-transform:uppercase}
+  .theme-coffee .s-title{font-family:'Fraunces',serif;font-weight:600;font-size:2rem;color:#2B1B12;line-height:1.02;font-optical-sizing:auto}
+  .theme-coffee .notes{display:flex;gap:6px;flex-wrap:wrap}
+  .theme-coffee .notes span{font-family:'Space Mono',monospace;font-size:.64rem;font-weight:700;letter-spacing:.02em;color:#3b2412;border:1.5px solid #3b2412;padding:3px 10px 3px 8px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+  .theme-coffee .notes span::before{content:"";width:6px;height:6px;border-radius:50%;background:#C4582E}
+  .theme-coffee .meter{margin:2px 0}
+  .theme-coffee .meter .track{height:9px;border-radius:5px;background:linear-gradient(90deg,#d8b78a,#5A3825,#2B1B12);position:relative;border:1px solid #8a5a2b}
+  .theme-coffee .meter .mark{position:absolute;top:-5px;left:68%;color:#2B1B12;font-size:.7rem}
+  .theme-coffee .meter .cap{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#8a5a2b;display:flex;justify-content:space-between;margin-top:3px}
+  .theme-coffee .s-points li{font-family:'Fraunces',serif;color:#4a3320;font-size:.86rem;padding-left:20px;position:relative}
+  .theme-coffee .s-points li::before{content:"●";position:absolute;left:0;font-size:.5rem;top:6px;color:#C4582E}
+  .theme-coffee .s-quote{font-family:'Fraunces',serif;font-style:italic;font-size:.98rem;color:#2B1B12;border-top:2px solid #b9885a;padding-top:11px;margin-top:auto}
+  .theme-coffee .s-quote cite{color:#8a5a2b;font-style:normal;font-weight:600;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em}
+  .theme-coffee .stamp{position:absolute;bottom:20px;right:22px;z-index:3;width:62px;height:62px;border-radius:50%;border:2px dashed #8a5a2b;color:#8a5a2b;
+    display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Space Mono',monospace;font-weight:700;font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-9deg);line-height:1.25}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <div class="kicker">Glaze · Theme Catalog</div>
+    <h1>Six styles, one piece of content — the <em>WOW factor</em></h1>
+    <p>Every card renders the exact same content in a different aesthetic, using the award-winning design techniques (Awwwards, Codrops, CodePen) that separate elite work from amateur — a receding 3D grid, chromatic aberration, diagonal manga panels, a real CRT layer, Japanese 間 (ma), and an editorial coffee label. Invoke Glaze and pick the skin.</p>
+    <div class="how">usage &rarr; <b>glaze &lt;content&gt; --style synthwave</b> · manga · brutalist · terminal · sumi · coffee</div>
+  </header>
+
+  <div class="grid">
+
+    <!-- 01 SYNTHWAVE -->
+    <article class="tile">
+      <div class="tile-head"><span class="name">Synthwave</span><span class="badge preset">preset</span><span class="num">01</span></div>
+      <div class="preview theme-synthwave">
+        <div class="sun"></div><div class="floor"></div>
+        <div class="sample">
+          <div class="s-eyebrow">one input</div>
+          <h2 class="s-title">Six skins</h2>
+          <ul class="s-points">
+            <li>You write the content once.</li>
+            <li>Glaze dresses it in the theme you pick.</li>
+          </ul>
+          <blockquote class="s-quote">"Pick the skin — the content stays the same."<cite>Glaze</cite></blockquote>
+        </div>
+      </div>
+      <div class="tile-foot"><b>Neon sci-fi with real depth.</b> For launches, retros, high-energy content.<span class="sig">⚡ signature: animated 3D grid + chromatic aberration + CRT scanlines</span></div>
+    </article>
+
+    <!-- 02 MANGA -->
+    <article class="tile">
+      <div class="tile-head"><span class="name">Manga / Anime Panels</span><span class="badge preset">preset</span><span class="num">02</span></div>
+      <div class="preview theme-manga">
+        <div class="sample">
+          <div class="mg-top">
+            <span class="sfx">ドン!</span>
+            <div class="s-eyebrow">one input</div>
+            <h2 class="s-title">Six<br>skins</h2>
+          </div>
+          <div class="mg-bot">
+            <ul class="s-points">
+              <li>You write the content once.</li>
+              <li>Glaze dresses it in the theme you pick.</li>
+            </ul>
+            <blockquote class="s-quote">Pick the skin — the content stays the same!<cite>Glaze</cite></blockquote>
+          </div>
+        </div>
+      </div>
+      <div class="tile-foot"><b>A real manga page, not stacked cards.</b> Punchy and fun, for recaps and threads.<span class="sig">⚡ signature: diagonal panel grid (clip-path) + halftone + SFX</span></div>
+    </article>
+
+    <!-- 03 BRUTALIST -->
+    <article class="tile">
+      <div class="tile-head"><span class="name">Neo-Brutalist</span><span class="badge preset">preset</span><span class="num">03</span></div>
+      <div class="preview theme-brutalist">
+        <div class="sticker">6<br>THEMES</div>
+        <div class="sample">
+          <div class="s-eyebrow">one input</div>
+          <h2 class="s-title">Six <span>skins</span></h2>
+          <ul class="s-points">
+            <li>You write the content once.</li>
+            <li>Glaze dresses it in the theme you pick.</li>
+          </ul>
+          <blockquote class="s-quote">"Pick the skin — the content stays the same."<cite>— Glaze</cite></blockquote>
+        </div>
+        <div class="marquee"><span>glaze · synthwave · manga · brutalist · terminal · sumi · coffee · glaze · synthwave · manga · brutalist · terminal · sumi · coffee ·&nbsp;</span></div>
+      </div>
+      <div class="tile-foot"><b>Deliberate discomfort, stacked blocks.</b> Raw and honest — the content is the design.<span class="sig">⚡ signature: solid blur-free shadows + saturated blocks + marquee</span></div>
+    </article>
+
+    <!-- 04 TERMINAL -->
+    <article class="tile">
+      <div class="tile-head"><span class="name">Terminal / CRT</span><span class="badge preset">preset</span><span class="num">04</span></div>
+      <div class="preview theme-terminal">
+        <div class="crt"></div>
+        <div class="sample">
+          <div class="winbar"><span class="dot" style="background:#f7768e"></span><span class="dot" style="background:#e0af68"></span><span class="dot" style="background:#9ece6a"></span><span class="path">~/glaze · demo.md</span></div>
+          <div class="term-body">
+            <div class="s-eyebrow"><b>❯</b> glaze demo.md <i>--style</i> <u>terminal</u></div>
+            <h2 class="s-title">Six skins</h2>
+            <ul class="s-points">
+              <li class="del">CSS by hand, rebuilt every output</li>
+              <li class="add">content once · swappable theme</li>
+            </ul>
+            <blockquote class="s-quote">"Pick the skin — the content stays the same."<cite>Glaze</cite></blockquote>
+          </div>
+          <div class="statusbar"><span class="mode">NORMAL</span><span class="git">  main ✗</span><span class="fill"></span><span class="enc">utf-8 · 6 themes</span></div>
+        </div>
+      </div>
+      <div class="tile-foot"><b>Your habitat, with a real CRT screen.</b> Tokyo Night, blinking cursor, vim status bar.<span class="sig">⚡ signature: CRT layer (scanline+glow+flicker) + typing + tmux bar</span></div>
+    </article>
+
+    <!-- 05 SUMI-E -->
+    <article class="tile">
+      <div class="tile-head"><span class="name">Sumi-e / Wabi-sabi</span><span class="badge preset2">preset</span><span class="num">05</span></div>
+      <div class="preview theme-sumi">
+        <div class="enso"></div>
+        <div class="tate">知恵</div>
+        <div class="hanko">印</div>
+        <div class="sample">
+          <div class="s-eyebrow">one input</div>
+          <h2 class="s-title">Six skins</h2>
+          <div class="brush"></div>
+          <ul class="s-points">
+            <li>You write the content once.</li>
+            <li>Glaze dresses it in the theme you pick.</li>
+          </ul>
+          <blockquote class="s-quote">Pick the skin — the content stays the same.<cite>Glaze</cite></blockquote>
+        </div>
+      </div>
+      <div class="tile-foot"><b>The emptiness is the composition (間 ma).</b> Ink, ensō, seal. Calm and sophisticated.<span class="sig">⚡ signature: negative space + ensō + vertical tate-gaki + hanko seal</span></div>
+    </article>
+
+    <!-- 06 COFFEE -->
+    <article class="tile">
+      <div class="tile-head"><span class="name">Café Especial</span><span class="badge preset2">preset</span><span class="num">06</span></div>
+      <div class="preview theme-coffee">
+        <div class="stamp">Glaze<br>preset<br>v1</div>
+        <div class="sample">
+          <div class="label-top"><span>Glaze · demo</span><span>Single Origin</span></div>
+          <div class="s-eyebrow">Tasting notes</div>
+          <h2 class="s-title">Six skins</h2>
+          <div class="notes"><span>floral</span><span>frutado</span><span>complexo</span></div>
+          <div class="meter">
+            <div class="track"><span class="mark">▼</span></div>
+            <div class="cap"><span>light</span><span>medium-dark</span><span>dark</span></div>
+          </div>
+          <ul class="s-points">
+            <li>You write the content once.</li>
+            <li>Glaze dresses it in the theme you pick.</li>
+          </ul>
+          <blockquote class="s-quote">Pick the skin — the content stays the same.<cite>Glaze</cite></blockquote>
+        </div>
+      </div>
+      <div class="tile-foot"><b>The page is the label, not the store.</b> Tasting notes become the headline. For personal/blog content.<span class="sig">⚡ signature: notes-as-headline + roast meter + riso/kraft grain</span></div>
+    </article>
+
+  </div>
+
+  <footer style="margin-top:50px;padding-top:24px;border-top:1px solid var(--shell-line);font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--shell-dim)">
+    Glaze &nbsp;·&nbsp; theme catalog &nbsp;·&nbsp; techniques: Awwwards · Codrops · CodePen &nbsp;·&nbsp; invoke Glaze and pick the skin
+  </footer>
+
+</div>
+</body>
+</html>

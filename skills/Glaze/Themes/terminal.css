@@ -1,0 +1,48 @@
+/* GLAZE THEME · terminal (CRT/TUI). Signature: real CRT screen layer
+   (scanlines + phosphor bloom + flicker + vignette) over a Tokyo Night
+   palette, vim-style statusbar, prompt headers, diff-colored points,
+   blinking block cursor on the title.
+   Fonts: JetBrains Mono (everything), VT323 (hard-retro accents). */
+body{font-family:'JetBrains Mono',monospace;color:#c0caf5;background:#1a1b26;background-attachment:fixed}
+/* CRT screen overlay */
+body::after{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;
+  background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.22) 2px 4px);
+  box-shadow:inset 0 0 140px rgba(0,0,0,.6),inset 0 0 40px rgba(122,162,247,.08);animation:tm-flick 4.5s infinite}
+@keyframes tm-flick{0%,94%,100%{opacity:1}95%{opacity:.94}97%{opacity:.98}}
+.glaze{padding-top:40px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.84rem;color:#565f89}
+.eyebrow::before{content:"❯ ";color:#9ece6a}
+.title{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:clamp(1.7rem,5vw,3rem);color:#7dcfff;
+  text-shadow:0 0 2px #7dcfff,0 0 12px rgba(125,207,255,.45)}
+.title::before{content:"## ";color:#ff9e64}
+.title::after{content:"▮";color:#e0af68;animation:tm-blink 1s steps(2,start) infinite;margin-left:2px}
+@keyframes tm-blink{50%{opacity:0}}
+.deck{font-size:.96rem;color:#a9b1d6;border-left:2px solid #565f89;padding-left:14px;text-align:left}
+.deck::before{content:"/* ";color:#565f89}.deck::after{content:" */";color:#565f89}
+.chip{font-family:'JetBrains Mono',monospace;font-size:.74rem;background:#283457;color:#7dcfff;border:1px solid #3b4261;padding:4px 11px;border-radius:4px}
+.chip::before{content:"#";color:#565f89}
+.block{background:#1f2335;border:1px solid #2a2e42;border-radius:8px;box-shadow:inset 0 0 30px rgba(0,0,0,.25)}
+.block > h2{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:clamp(1.15rem,3vw,1.45rem);color:#bb9af7}
+.block > h2::before{content:"### ";color:#ff9e64}
+.points li{font-size:.95rem;color:#c0caf5;padding-left:20px}
+.points li::before{content:"-";position:absolute;left:0;color:#9ece6a}
+/* opt-in diff styling via inline class on <li> (.add / .del) */
+.points li.add{color:#9ece6a}.points li.add::before{content:"+"}
+.points li.del{color:#f7768e}.points li.del::before{content:"-"}
+.quote{border-left:2px solid #e0af68;padding:10px 14px;color:#e0af68;font-size:.95rem;background:rgba(224,175,104,.06);border-radius:0 6px 6px 0}
+.quote cite{color:#bb9af7}.quote cite::before{content:"// "}
+.takeaway{border:1px dashed #7aa2f7;border-radius:8px;background:rgba(122,162,247,.06);text-align:left}
+.takeaway .lbl{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#565f89}
+.takeaway .lbl::before{content:"$ echo "}
+.takeaway p{font-size:1.25rem;color:#9ece6a}
+.takeaway p::before{content:"\"";color:#565f89}.takeaway p::after{content:"\"";color:#565f89}
+.twomin li{font-size:.95rem;padding-left:30px;position:relative;color:#c0caf5}
+.twomin li::before{content:"❯";position:absolute;left:0;color:#7aa2f7}
+.refs li{padding-left:20px;color:#a9b1d6}.refs li::before{content:"→";position:absolute;left:0;color:#7dcfff}
+.refs strong{color:#7dcfff;font-weight:700}
+hr.rule{background:#2a2e42}
+hr.rule::before{content:"";display:block}
+.glaze-foot{border-top:1px solid #2a2e42;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#565f89;
+  display:flex;flex-wrap:wrap;gap:0;align-items:center}
+.glaze-foot::before{content:"  NORMAL ";background:#7aa2f7;color:#16161e;font-weight:700;padding:4px 10px;border-radius:3px;margin-right:10px}
+.classification{background:#283457;color:#7dcfff;border:1px solid #3b4261;padding:3px 12px;border-radius:3px;letter-spacing:.1em}

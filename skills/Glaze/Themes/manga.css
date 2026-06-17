@@ -1,0 +1,45 @@
+/* GLAZE THEME · manga — comic/anime page. Signature: blocks become ink
+   panels with thick borders + slight diagonal/rotation, halftone shading,
+   speed-line burst behind the header, ink-stroke title, speech-bubble quotes,
+   onomatopoeia SFX. Mono-ink + one shonen-red accent.
+   Fonts: Bangers (display/SFX), Anton (section heads), Comic Neue (body). */
+body{font-family:'Comic Neue',cursive;font-weight:400;color:#111;
+  background:#FAF8F2;
+  background-image:radial-gradient(#11111114 1.4px,transparent 1.5px);background-size:7px 7px;background-attachment:fixed}
+/* speed-line burst behind header */
+.glaze-head{position:relative;padding:22px 22px 26px;border:5px solid #111;background:#FAF8F2;overflow:hidden;
+  clip-path:polygon(0 0,100% 0,100% 92%,0 100%)}
+.glaze-head::before{content:"";position:absolute;inset:0;z-index:0;
+  background:repeating-conic-gradient(from 0deg at 82% 130%,rgba(17,17,17,.14) 0deg 1deg,transparent 1deg 3.2deg);
+  -webkit-mask-image:radial-gradient(circle at 82% 130%,transparent 26%,#000 58%);mask-image:radial-gradient(circle at 82% 130%,transparent 26%,#000 58%)}
+.glaze-head > *{position:relative;z-index:1}
+.eyebrow{font-family:'Bangers',cursive;letter-spacing:.1em;font-size:1.2rem;color:#E5251E;transform:skewX(-7deg)}
+.title{font-family:'Bangers',cursive;font-size:clamp(2.6rem,7vw,4.6rem);color:#FAF8F2;letter-spacing:.02em;transform:skewX(-5deg);
+  -webkit-text-stroke:2.5px #111;text-shadow:6px 6px 0 #111,6px 6px 0 #FFD600}
+.deck{font-family:'Comic Neue',cursive;font-weight:700;font-size:1.05rem;color:#111;text-align:left}
+.meta{margin-top:14px}
+.chip{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:.74rem;letter-spacing:.04em;background:#111;color:#FAF8F2;padding:5px 12px;transform:skewX(-6deg)}
+/* sections as panels — alternate the tilt */
+.block{background:#fff;border:4px solid #111;box-shadow:6px 6px 0 #111;position:relative;overflow:visible}
+.block:nth-child(odd){transform:rotate(-.5deg)}
+.block:nth-child(even){transform:rotate(.5deg)}
+.block::after{content:"";position:absolute;top:10px;right:10px;width:70px;height:70px;background:radial-gradient(#11111122 1.4px,transparent 1.5px);background-size:6px 6px;opacity:.5;pointer-events:none}
+.block > h2{font-family:'Bangers',cursive;font-size:clamp(1.5rem,3.6vw,2.1rem);color:#111;letter-spacing:.02em;transform:skewX(-3deg);text-shadow:3px 3px 0 #FFD600}
+.points li{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:.92rem;letter-spacing:.015em;line-height:1.3;padding-left:24px}
+.points li::before{content:"≫";position:absolute;left:0;color:#E5251E;font-family:'Bangers'}
+/* quotes = speech bubbles with a tail */
+.quote{position:relative;background:#fff;border:3px solid #111;border-radius:18px;padding:14px 18px;font-family:'Comic Neue',cursive;font-weight:700;font-size:1.04rem;color:#111;box-shadow:5px 5px 0 #111;margin:14px 0 22px}
+.quote::after{content:"";position:absolute;bottom:-17px;left:38px;width:0;height:0;border:10px solid transparent;border-top-color:#111}
+.quote::before{content:"";position:absolute;bottom:-10px;left:41px;width:0;height:0;border:7px solid transparent;border-top-color:#fff;z-index:1}
+.quote cite{font-family:'Inter';font-weight:700;color:#E5251E}
+.takeaway{border:5px solid #111;background:#FFD600;box-shadow:8px 8px 0 #111;transform:rotate(-.6deg)}
+.takeaway .lbl{font-family:'Bangers',cursive;font-size:1.1rem;letter-spacing:.08em;color:#E5251E}
+.takeaway p{font-family:'Bangers',cursive;font-size:clamp(1.4rem,4vw,2.2rem);color:#111;letter-spacing:.02em}
+.twomin li{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:.92rem;padding-left:30px;position:relative}
+.twomin li::before{content:"!";position:absolute;left:0;font-family:'Bangers';color:#E5251E;font-size:1.2rem}
+.refs li{padding-left:22px;font-family:'Comic Neue',cursive;font-weight:700}.refs li::before{content:"★";position:absolute;left:0;color:#E5251E}
+.refs strong{font-family:'Anton',sans-serif;font-weight:400}
+hr.rule{height:5px;background:#111;-webkit-mask-image:repeating-linear-gradient(90deg,#000 0 18px,transparent 18px 26px);mask-image:repeating-linear-gradient(90deg,#000 0 18px,transparent 18px 26px)}
+.glaze-foot{border-top:4px solid #111;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:.04em;color:#111;text-align:center}
+.classification{border:3px solid #111;background:#E5251E;color:#fff;padding:3px 12px;font-family:'Bangers';letter-spacing:.08em;box-shadow:3px 3px 0 #111}
+@media (max-width:640px){.block:nth-child(odd),.block:nth-child(even){transform:none}}

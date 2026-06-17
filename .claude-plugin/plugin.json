@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "glaze",
+  "displayName": "Glaze",
+  "version": "1.0.0",
+  "description": "Turn any text output — a plan, a report, a summary — into a beautiful, self-contained themed HTML page. Glaze skins content; it does not generate it. Six award-grade CSS themes, zero build step.",
+  "author": {
+    "name": "Eduardo Bizarro",
+    "url": "https://github.com/edbizarro"
+  },
+  "homepage": "https://github.com/edbizarro/glaze",
+  "repository": "https://github.com/edbizarro/glaze",
+  "license": "MIT",
+  "keywords": [
+    "html",
+    "css",
+    "themes",
+    "styling",
+    "report",
+    "skill",
+    "claude-code",
+    "synthwave",
+    "brutalist",
+    "terminal"
+  ]
+}

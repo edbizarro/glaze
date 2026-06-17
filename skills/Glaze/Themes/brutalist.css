@@ -1,0 +1,35 @@
+/* GLAZE THEME · brutalist (neo-brutalism). Signature: hard zero-blur offset
+   shadows + thick black borders (radius 0) + clashing saturated flat blocks +
+   shadow-shift hover + oversized type + rotated sticker + marquee divider.
+   Fonts: Archivo Black (display), Space Mono (body/labels). */
+body{font-family:'Space Mono',monospace;color:#1A1A1A;background:#FFFBEB;
+  background-image:linear-gradient(#1a1a1a0d 1px,transparent 1px),linear-gradient(90deg,#1a1a1a0d 1px,transparent 1px);background-size:24px 24px;background-attachment:fixed}
+.glaze-head{position:relative}
+.eyebrow{display:inline-block;background:#2D5BFF;color:#fff;font-family:'Space Mono',monospace;font-weight:700;font-size:.74rem;letter-spacing:.16em;padding:6px 13px;border:3px solid #1A1A1A;box-shadow:5px 5px 0 #1A1A1A}
+.title{font-family:'Archivo Black',sans-serif;font-size:clamp(2.6rem,9vw,5.5rem);color:#1A1A1A;letter-spacing:-.03em;margin-top:14px}
+.title em{font-style:normal;background:#FFDE00;box-shadow:0 0 0 5px #FFDE00,8px 8px 0 #1A1A1A;display:inline-block}
+.deck{font-family:'Space Mono',monospace;font-size:1rem;color:#1A1A1A;background:#fff;border:3px solid #1A1A1A;box-shadow:6px 6px 0 #1A1A1A;padding:14px 16px;text-align:left}
+.meta{margin-top:18px}
+.chip{font-family:'Space Mono',monospace;font-weight:700;font-size:.72rem;letter-spacing:.08em;background:#fff;color:#1A1A1A;border:3px solid #1A1A1A;padding:5px 11px;box-shadow:4px 4px 0 #1A1A1A}
+.block{background:#fff;border:3px solid #1A1A1A;border-radius:0;box-shadow:8px 8px 0 #1A1A1A;transition:transform .12s,box-shadow .12s}
+.block:hover{transform:translate(4px,4px);box-shadow:4px 4px 0 #1A1A1A}
+.block:nth-child(3n+1){background:#fff}
+.block:nth-child(3n+2){background:#FFF0F6}
+.block:nth-child(3n+3){background:#EFF3FF}
+.block > h2{font-family:'Archivo Black',sans-serif;font-size:clamp(1.4rem,4vw,2.1rem);color:#1A1A1A;letter-spacing:-.02em;border-bottom:3px solid #1A1A1A;padding-bottom:10px}
+.points{gap:0}
+.points li{font-family:'Space Mono',monospace;font-size:.92rem;color:#1A1A1A;border-bottom:2px solid #1A1A1A;padding:10px 0 10px 26px}
+.points li::before{content:"→";position:absolute;left:0;font-weight:700;color:#2D5BFF}
+.points li:last-child{border-bottom:0}
+.quote{background:#FFDE00;border:3px solid #1A1A1A;box-shadow:6px 6px 0 #1A1A1A;padding:16px;font-family:'Space Mono',monospace;font-weight:700;font-size:1rem;color:#1A1A1A;margin:16px 0}
+.quote cite{text-decoration:underline;text-underline-offset:3px;color:#1A1A1A}
+.takeaway{background:#FF4D8D;border:3px solid #1A1A1A;box-shadow:10px 10px 0 #1A1A1A;text-align:left}
+.takeaway .lbl{font-family:'Space Mono',monospace;font-weight:700;font-size:.74rem;letter-spacing:.16em;color:#1A1A1A;text-transform:uppercase}
+.takeaway p{font-family:'Archivo Black',sans-serif;font-size:clamp(1.4rem,4vw,2.2rem);color:#1A1A1A;letter-spacing:-.02em}
+.twomin li{font-family:'Space Mono',monospace;font-size:.95rem;padding-left:34px;position:relative;padding-top:4px;padding-bottom:4px}
+.twomin li::before{content:"■";position:absolute;left:0;color:#2D5BFF}
+.refs li{padding-left:24px;font-family:'Space Mono',monospace}.refs li::before{content:"▸";position:absolute;left:0;color:#FF4D8D;font-weight:700}
+.refs strong{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:.92rem}
+hr.rule{height:16px;border:0;border-top:3px solid #1A1A1A;border-bottom:3px solid #1A1A1A;background:repeating-linear-gradient(45deg,#1A1A1A 0 14px,#FFDE00 14px 28px)}
+.glaze-foot{border-top:3px solid #1A1A1A;font-family:'Space Mono',monospace;font-size:.78rem;color:#1A1A1A;text-align:center}
+.classification{background:#1A1A1A;color:#FFDE00;border:3px solid #1A1A1A;padding:3px 14px;font-weight:700;letter-spacing:.14em}

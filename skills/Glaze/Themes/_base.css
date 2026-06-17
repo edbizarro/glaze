@@ -1,0 +1,54 @@
+/* ==========================================================================
+   GLAZE · _base.css — structural, theme-agnostic content model
+   Every theme overrides color, type, and decoration. This file only owns
+   layout, spacing, flow, responsiveness, and print safety.
+   Content model classes (themes style these):
+     .glaze .glaze-head .eyebrow .title .deck .meta .chip
+     .block (h2) .points(li) .quote(cite)
+     .takeaway(.lbl,p) .twomin .refs(strong) .glaze-foot .classification
+   Decorative full-page layers live in each theme as body::before/::after
+   or .fx-* elements (position:fixed) so they never disturb document flow.
+   ========================================================================== */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;min-height:100vh;position:relative;overflow-x:hidden}
+
+.glaze{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:56px 24px 120px}
+
+.glaze-head{margin-bottom:14px}
+.eyebrow{text-transform:uppercase}
+.title{line-height:1.05}
+.deck{max-width:680px;margin-top:18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+
+main{display:flex;flex-direction:column}
+.block{margin:26px 0;padding:24px 26px}
+.block > h2{margin-bottom:16px;line-height:1.18}
+.points{list-style:none;display:flex;flex-direction:column;gap:12px}
+.points li{position:relative}
+.quote{display:block;margin:8px 0}
+.quote cite{display:block;font-style:normal;margin-top:6px}
+
+/* closing sections */
+.takeaway{margin:40px 0;padding:30px 24px;text-align:center}
+.takeaway .lbl{display:block}
+.takeaway p{margin-top:12px}
+.twomin ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.refs ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.refs li{position:relative}
+
+.glaze-foot{margin-top:60px;padding-top:22px}
+.classification{display:inline-block}
+
+a{color:inherit}
+hr.rule{border:0;height:1px;margin:42px 0}
+
+/* responsive: tighten gutters on phones; themes may further adapt */
+@media (max-width:640px){
+  .glaze{padding:36px 16px 90px}
+  .block{padding:20px 16px}
+}
+@media print{
+  body::before,body::after,.fx,.fx-grid,.fx-crt,.fx-noise{display:none !important}
+  body{background:#fff !important;color:#111 !important}
+}

@@ -1,0 +1,39 @@
+/* GLAZE THEME · sumi-e / wabi-sabi. Signature: 間 (ma) negative space as the
+   active element + ensō ring + tate-gaki vertical label + washi paper grain +
+   vermilion hanko seal + ink-bleed serif + generous leading. Restraint to 3
+   colors: sumi ink, washi cream, shu vermilion.
+   Fonts: Shippori Mincho (display), Zen Old Mincho (body). */
+body{font-family:'Zen Old Mincho',serif;color:#27221F;background:#F5F0E8;background-attachment:fixed}
+/* washi grain */
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;mix-blend-mode:multiply;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* ensō floating top-right (ma) */
+body::after{content:"";position:fixed;top:8vh;right:6vw;z-index:0;width:160px;height:160px;border-radius:50%;
+  border:9px solid #1A1718;border-right-color:transparent;border-bottom-color:rgba(26,23,24,.5);transform:rotate(38deg);filter:blur(.4px);opacity:.85;pointer-events:none}
+.glaze{max-width:680px;padding:18vh 28px 16vh 84px}
+/* tate-gaki vertical label down the left margin */
+.glaze::before{content:"知 恵";position:fixed;top:16vh;left:max(16px,calc(50vw - 420px));z-index:1;writing-mode:vertical-rl;text-orientation:upright;
+  font-family:'Shippori Mincho',serif;font-weight:700;font-size:1.3rem;letter-spacing:.3em;color:#1A1718;opacity:.75}
+.eyebrow{font-family:'Shippori Mincho',serif;font-weight:500;letter-spacing:.32em;font-size:.76rem;color:#B7382B}
+.title{font-family:'Shippori Mincho',serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);color:#27221F;line-height:1.35;letter-spacing:.03em;filter:blur(.25px);text-shadow:0 0 1px rgba(39,34,31,.35)}
+.deck{font-family:'Zen Old Mincho',serif;font-size:1.02rem;line-height:2;color:#33312b;text-align:left}
+.chip{font-family:'Shippori Mincho',serif;font-size:.78rem;letter-spacing:.1em;color:#1A1718;border:1px solid #1A1718;padding:4px 13px;background:transparent}
+.block{background:transparent;padding:30px 0;border-bottom:1px solid rgba(26,23,24,.12)}
+.block:last-of-type{border-bottom:0}
+.block > h2{font-family:'Shippori Mincho',serif;font-weight:700;font-size:clamp(1.3rem,3.2vw,1.7rem);color:#1A1718;letter-spacing:.04em}
+.points{gap:15px}
+.points li{font-family:'Zen Old Mincho',serif;font-size:1rem;line-height:1.95;color:#33312b;padding-left:22px}
+.points li::before{content:"—";position:absolute;left:0;color:#B7382B}
+.quote{font-family:'Shippori Mincho',serif;font-size:1.12rem;line-height:1.95;color:#1A1718;border-left:2px solid #1A1718;padding:4px 0 4px 18px;font-style:italic;margin:14px 0}
+.quote cite{color:#33312b;font-style:normal}.quote cite::before{content:"印  "}
+.takeaway{border:0;border-top:1px solid #1A1718;border-bottom:1px solid #1A1718;background:transparent;padding:36px 0}
+.takeaway .lbl{font-family:'Shippori Mincho',serif;letter-spacing:.3em;font-size:.74rem;color:#B7382B;text-transform:uppercase}
+.takeaway p{font-family:'Shippori Mincho',serif;font-size:1.5rem;line-height:1.7;color:#27221F}
+.twomin li{font-family:'Zen Old Mincho',serif;font-size:1rem;line-height:1.9;padding-left:26px;position:relative}
+.twomin li::before{content:"・";position:absolute;left:0;color:#B7382B;font-size:1.2rem}
+.refs li{padding-left:20px;line-height:1.8;color:#33312b}.refs li::before{content:"—";position:absolute;left:0;color:#B7382B}
+.refs strong{font-family:'Shippori Mincho',serif;font-weight:700;color:#1A1718}
+hr.rule{background:#1A1718;height:14px;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='14'%3E%3Cpath d='M3 8 Q50 2 100 7 T197 6 Q150 12 80 10 T3 8Z' fill='black'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='14'%3E%3Cpath d='M3 8 Q50 2 100 7 T197 6 Q150 12 80 10 T3 8Z' fill='black'/%3E%3C/svg%3E");-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}
+.glaze-foot{border-top:1px solid rgba(26,23,24,.15);font-family:'Shippori Mincho',serif;font-size:.84rem;color:#33312b;text-align:right}
+.classification{color:#B7382B;border:1px solid #B7382B;padding:3px 13px;letter-spacing:.16em}
+@media (max-width:640px){.glaze{padding:10vh 18px 8vh 18px}.glaze::before{display:none}body::after{width:110px;height:110px}}

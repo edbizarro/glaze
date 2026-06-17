@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace-manifest.json",
+  "name": "glaze",
+  "description": "Glaze — content into themed HTML artifacts.",
+  "owner": {
+    "name": "Eduardo Bizarro"
+  },
+  "plugins": [
+    {
+      "name": "glaze",
+      "source": "./",
+      "description": "Turn any text output into a beautiful, self-contained themed HTML page. Six award-grade themes, zero build step.",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "html",
+        "css",
+        "themes",
+        "styling"
+      ]
+    }
+  ]
+}

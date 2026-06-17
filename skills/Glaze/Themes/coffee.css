@@ -1,0 +1,34 @@
+/* GLAZE THEME · coffee (specialty/artisan roaster). Signature: the page reads
+   like an editorial coffee LABEL, not a store — tasting notes as headline,
+   flavor-note pills, roast-level meter, kraft + risograph grain, rotated
+   "roasted fresh" stamp, origin/spec rows, editorial serif + mono caption.
+   Fonts: Fraunces (display), Space Mono (caption/labels), Inter (body). */
+body{font-family:'Inter',sans-serif;color:#4a3320;
+  background:radial-gradient(at 75% 8%,#fbf2e2,transparent 55%),linear-gradient(180deg,#F3E9D8,#e6d5ba);background-attachment:fixed}
+/* riso/kraft grain */
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;mix-blend-mode:multiply;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+.glaze-head{position:relative;border-bottom:1.5px solid #b9885a;padding-bottom:18px}
+.eyebrow{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.26em;font-size:.7rem;color:#8a5a2b}
+.title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.2rem,6vw,4rem);color:#2B1B12;line-height:1.02;font-optical-sizing:auto}
+.deck{font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;color:#4a3320;text-align:left}
+.meta{margin-top:16px}
+.chip{font-family:'Space Mono',monospace;font-size:.66rem;font-weight:700;letter-spacing:.02em;color:#3b2412;border:1.5px solid #3b2412;padding:4px 11px 4px 9px;border-radius:999px;display:inline-flex;align-items:center;gap:7px}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#C4582E}
+.block{background:rgba(255,251,243,.5);border:1px solid #c9a87c;border-radius:10px;box-shadow:0 8px 24px rgba(90,56,37,.08)}
+.block > h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.3rem,3.4vw,1.9rem);color:#2B1B12;line-height:1.1}
+.block > h2::before{content:"◜ ";color:#C4582E;font-family:'Space Mono'}
+.points li{font-family:'Inter',sans-serif;color:#4a3320;font-size:.98rem;padding-left:22px}
+.points li::before{content:"●";position:absolute;left:0;font-size:.52rem;top:8px;color:#C4582E}
+.quote{font-family:'Fraunces',serif;font-style:italic;font-size:1.12rem;color:#2B1B12;border-top:2px solid #b9885a;border-bottom:2px solid #b9885a;padding:14px 0;margin:14px 0}
+.quote cite{font-family:'Space Mono',monospace;font-style:normal;font-weight:700;font-size:.74rem;letter-spacing:.06em;color:#8a5a2b}
+.takeaway{border:1.5px solid #b9885a;border-radius:12px;background:rgba(255,251,243,.6);position:relative}
+.takeaway .lbl{font-family:'Space Mono',monospace;letter-spacing:.22em;font-size:.68rem;color:#8a5a2b;text-transform:uppercase}
+.takeaway p{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.4rem,4vw,2.1rem);color:#2B1B12;line-height:1.1}
+.twomin li{font-family:'Inter',sans-serif;font-size:.98rem;padding-left:32px;position:relative;color:#4a3320}
+.twomin li::before{content:"☕";position:absolute;left:0;font-size:.8rem;top:2px}
+.refs li{padding-left:22px;color:#4a3320}.refs li::before{content:"◆";position:absolute;left:0;color:#C4582E;font-size:.66rem;top:6px}
+.refs strong{font-family:'Fraunces',serif;font-weight:600;color:#2B1B12}
+hr.rule{background:linear-gradient(90deg,transparent,#b9885a,transparent)}
+.glaze-foot{border-top:1.5px solid #b9885a;font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.04em;color:#8a5a2b;text-align:center}
+.classification{font-family:'Space Mono',monospace;color:#8a5a2b;border:1.5px solid #b9885a;padding:3px 13px;border-radius:999px;letter-spacing:.12em}

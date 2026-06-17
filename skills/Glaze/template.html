@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Master font link covers every Glaze theme; one request, cached. -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bangers&family=Comic+Neue:wght@400;700&family=DM+Serif+Display&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Monoton&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Shippori+Mincho:wght@500;700;800&family=Space+Mono:wght@400;700&family=VT323&family=Zen+Old+Mincho:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+/* ===== GLAZE: inline _base.css here, then the chosen Themes/<style>.css ===== */
+{{GLAZE_STYLE}}
+</style>
+</head>
+<body>
+<div class="glaze">
+
+  <header class="glaze-head">
+    <div class="eyebrow">{{EYEBROW}}</div>
+    <h1 class="title">{{TITLE_TEXT}}</h1>
+    <p class="deck">{{DECK}}</p>
+    <!-- optional tags row (renders as flavor pills in coffee, neon chips in
+         synthwave, #tags in terminal). Delete if unused:
+    <div class="meta"><span class="chip">{{TAG}}</span><span class="chip">{{TAG}}</span></div>
+    -->
+    <!-- optional: wrap a word of the title in <em> for emphasis (boxed in brutalist). -->
+  </header>
+
+  <hr class="rule">
+
+  <main>
+    <!-- Repeat .block per section. Each: an <h2>, a .points list, and 0+ .quote.
+         Drop a .deck/.meta only in the header. Keep markup to these classes so
+         every theme styles it identically. -->
+    <section class="block">
+      <h2>{{SECTION_TITLE}}</h2>
+      <ul class="points">
+        <li>{{POINT}}</li>
+      </ul>
+      <blockquote class="quote">{{QUOTE_TEXT}}<cite>{{QUOTE_WHO}}</cite></blockquote>
+    </section>
+  </main>
+
+  <hr class="rule">
+
+  <!-- Closing sections (optional, depending on source content) -->
+  <div class="takeaway">
+    <span class="lbl">{{TAKEAWAY_LABEL}}</span>
+    <p>{{TAKEAWAY_TEXT}}</p>
+  </div>
+
+  <section class="block twomin">
+    <h2>{{TWOMIN_TITLE}}</h2>
+    <ul>
+      <li>{{TWOMIN_POINT}}</li>
+    </ul>
+  </section>
+
+  <section class="block refs">
+    <h2>{{REFS_TITLE}}</h2>
+    <ul>
+      <li><strong>{{REF_NAME}}</strong> — {{REF_DESC}}</li>
+    </ul>
+  </section>
+
+  <footer class="glaze-foot">
+    <span class="classification">{{CLASSIFICATION}}</span>
+    {{FOOTER_META}}
+  </footer>
+
+</div>
+</body>
+</html>
