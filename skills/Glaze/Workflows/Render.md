@@ -8,7 +8,7 @@ Goal: turn given content into a self-contained themed HTML artifact and verify i
   the content — if it must be produced first (a wisdom extraction, a summary),
   produce it first, then glaze the result.
 - **Theme.** Read `--style`. Resolve aliases (see SKILL.md). If none given, ask
-  which of the seven (`terminal` is a safe default). `random` → pick one, announce it.
+  which of the eight (`terminal` is a safe default). `random` → pick one, announce it.
 - **Language / classification.** Content language follows the source. Set the
   `.classification` footer only when the content carries a sensitivity label.
   If your environment exposes a per-skill preferences file, honor it.

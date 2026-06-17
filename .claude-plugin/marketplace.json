@@ -9,7 +9,7 @@
     {
       "name": "glaze",
       "source": "./",
-      "description": "Turn any text output into a beautiful, self-contained themed HTML page. Seven award-grade themes, zero build step.",
+      "description": "Turn any text output into a beautiful, self-contained themed HTML page. Eight award-grade themes, zero build step.",
       "license": "MIT",
       "category": "productivity",
       "keywords": [
