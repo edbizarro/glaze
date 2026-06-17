@@ -1,11 +1,26 @@
 # Glaze
 
-**Turn any text output — a plan, a report, a summary, release notes — into a
-beautiful, self-contained themed HTML page.**
+<p align="center">
+  <a href="https://github.com/edbizarro/glaze/actions/workflows/ci.yml"><img src="https://github.com/edbizarro/glaze/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://claude.com/claude-code"><img src="https://img.shields.io/badge/Claude%20Code-plugin-8A63D2" alt="Claude Code plugin"></a>
+  <img src="https://img.shields.io/badge/runtime%20deps-zero-brightgreen" alt="runtime deps: zero">
+  <img src="https://img.shields.io/badge/themes-7-ff6ac1" alt="themes: 7">
+</p>
 
-Glaze is a [Claude Code](https://claude.com/claude-code) skill. It takes content
-you already have and renders it as a polished, standalone HTML file in a visual
-theme of your choice. Glaze *skins* content — it does not generate it.
+**Turn any text output — a plan, a report, a summary, release notes — into a
+beautiful, self-contained themed HTML page in one step.**
+
+You already have the content. Glaze *skins* it: it maps your text onto a fixed
+structure, applies one of seven award-grade visual themes, and hands back a single
+standalone HTML file you can send, open, or publish anywhere. No build step, no JS
+framework, nothing to install at render time. Glaze is a
+[Claude Code](https://claude.com/claude-code) skill — it restyles content, it never
+generates or rewrites it.
+
+[Themes](#the-seven-themes) · [What it is](#what-it-is-and-isnt) ·
+[Install](#install) · [Usage](#usage) · [For coding agents](#for-coding-agents) ·
+[Add a theme](#add-your-own-theme) · [Develop](#development)
 
 ## The seven themes
 
@@ -54,7 +69,8 @@ In Claude Code:
 /plugin install glaze@glaze
 ```
 
-That's it. Glaze is now available in your sessions.
+That's it. Glaze is now available in your sessions. (Working without the plugin
+system? See [For coding agents](#for-coding-agents) for the manual install.)
 
 ## Usage
 
@@ -76,6 +92,64 @@ glaze <content-or-reference> --style <synthwave|manga|brutalist|terminal|sumi|co
 - `--style random` picks one at random.
 - Aliases: `vaporwave`→synthwave, `anime`→manga, `neo`→brutalist, `crt`/`tui`→terminal,
   `wabi`→sumi, `cafe`→coffee, `diesel`/`steampunk`/`brass`→dieselpunk.
+
+## For coding agents
+
+This section is written for AI coding agents (Claude Code, Cursor, Codex, and the
+like) operating Glaze without a human in the loop. It is the contract; the full
+spec lives in [`skills/Glaze/SKILL.md`](skills/Glaze/SKILL.md) and
+[`skills/Glaze/Workflows/Render.md`](skills/Glaze/Workflows/Render.md).
+
+### Install (manual — no plugin system required)
+
+Glaze is a self-contained skill directory. Clone the repo and link the skill into
+the agent's skills path so it loads automatically:
+
+```bash
+git clone https://github.com/edbizarro/glaze.git
+# Claude Code — personal (all sessions) or project-scoped:
+ln -s "$PWD/glaze/skills/Glaze" ~/.claude/skills/Glaze
+#   …or:  ln -s "$PWD/glaze/skills/Glaze" <project>/.claude/skills/Glaze
+```
+
+A symlink keeps the skill in sync with `git pull`; `cp -r` works too if you want a
+frozen copy. Everything the skill needs ships in `skills/Glaze/` — themes,
+`template.html`, and the workflows. No dependencies are installed to *render*; the
+`package.json` at the repo root exists only for linting (see
+[Development](#development)).
+
+### How to work with the skill
+
+Read `SKILL.md` first — it is the source of truth. The non-negotiable contract:
+
+1. **Skin, don't generate.** Glaze never writes the content. If the body must be
+   produced (a summary, an extraction), produce it in a prior step, then glaze it.
+2. **Always resolve a theme.** Pass `--style <theme>`. If none is given, *ask* —
+   never silently pick. `terminal` is the safe default for technical content.
+3. **Emit exactly one self-contained file.** Inline `Themes/_base.css` then the
+   chosen `Themes/<theme>.css` into `template.html`'s `{{GLAZE_STYLE}}` placeholder
+   (base first, theme second so the theme wins). Never link CSS by relative path —
+   the artifact must travel.
+4. **Stay on the content model.** Use only the canonical classes
+   (`.glaze`, `.glaze-head`, `.block`, `.points`, `.quote`, …). No inline styles.
+   Preserve verbatim quotes character-for-character.
+5. **Verify before "done".** Open the file in a browser (headless is fine), confirm
+   the theme's signature elements and fonts rendered and the prose is legible, then
+   screenshot. Continuous animations stall screenshot tools — freeze them first with
+   `*,*::before,*::after{animation:none !important}`.
+
+Render pipeline in brief (full version in `Workflows/Render.md`):
+
+```
+resolve content + theme  →  map content onto template.html's classes
+  →  inline _base.css + <theme>.css into {{GLAZE_STYLE}}
+  →  write reports/glaze-<slug>-<theme>-YYYY-MM-DD.html
+  →  open in a browser and verify  →  deliver the file
+```
+
+> Prefer a dedicated agent file? These instructions drop cleanly into an
+> [`AGENTS.md`](https://agents.md) at the repo root, the emerging open standard that
+> agents read automatically.
 
 ## Add your own theme
 
