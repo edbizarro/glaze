@@ -66,6 +66,11 @@ Canonical demo body (verbatim — same as synthwave…dieselpunk):
 - quote `Same content, six skins — pick the one that fits the moment.` cite `the Glaze catalog`
 - takeaway lbl `The point` / `One file. Send it anywhere.`
 
+> The quote's "**six** skins" is a **frozen parity string**, not a live count — it is kept
+> verbatim so every asset shows identical pixels. Do NOT "fix" it to the current theme count;
+> that would make the new asset diverge from the others (the exact thing §5 forbids). It is
+> deliberately exempt from the §6 count gate.
+
 Render that through `template.html` (inline `_base.css` + `<name>.css`), open in a **real
 browser**, freeze animations (`*,*::before,*::after{animation:none !important}`), screenshot,
 then crop/resize to **1400×947** at the others' aspect:
@@ -74,8 +79,10 @@ then crop/resize to **1400×947** at the others' aspect:
 
 ## 6. Test, lint, verify (gates — all must pass)
 - `bun run lint` → stylelint (themes) + html-validate (template + Catalog) green.
-- `rg -n "seven|themes-7" README.md skills .claude-plugin` returns **nothing** (only the
-  historical line in `CHANGELOG.md` may remain). Stale counts = failed registration.
+- Stale-count gate — scope to the user-facing registration files only (this workflow file and
+  `CHANGELOG.md` legitimately mention old counts, so exclude them):
+  `rg -ni "seven|themes-7" README.md skills/Glaze/SKILL.md skills/Glaze/Catalog.html skills/Glaze/Workflows/Render.md .claude-plugin`
+  must return **nothing**. Any hit = a stale count = failed registration.
 - Smoke-test: glaze a real multi-section piece with `--style <name>` via `Workflows/Render.md`
   and verify in a browser — signature elements present, fonts loaded, prose legible, mobile
   (≤640px) collapses cleanly. Freeze animations first if a screenshot tool stalls.

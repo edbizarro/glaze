@@ -9,7 +9,7 @@ body{
   font-family:'Inter',system-ui,sans-serif;font-weight:400;line-height:1.5;
   color:var(--neon-ink);background:var(--neon-bg)}
 /* CRT scanline overlay */
-body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
+body::after{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;
   background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(255,255,255,.02) 2px 4px)}
 /* faint dot-matrix field */
 body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
