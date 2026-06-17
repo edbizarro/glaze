@@ -4,6 +4,13 @@ All notable changes to Glaze are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0](https://github.com/edbizarro/glaze/compare/v1.1.1...v1.2.0) (2026-06-17)
+
+
+### Features
+
+* add neonops theme + exhaustive AddTheme checklist ([#2](https://github.com/edbizarro/glaze/issues/2)) ([ed8cb6d](https://github.com/edbizarro/glaze/commit/ed8cb6d67767aed908ba1a5cae0465da6f2491d3))
+
 ## [1.1.1](https://github.com/edbizarro/glaze/compare/v1.1.0...v1.1.1) (2026-06-17)
 
 
