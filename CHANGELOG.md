@@ -4,6 +4,23 @@ All notable changes to Glaze are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] — 2026-06-17
+
+### Added
+- `dieselpunk` theme — interwar brass and oiled steel, the seventh theme.
+- Lint tooling (stylelint + html-validate) and a PR validation workflow
+  (`claude plugin validate`, JSON-Schema manifest checks, lint suite).
+
+### Changed
+- Generic `font-family` fallbacks across all themes, so a page still renders
+  legibly when Google Fonts is unavailable.
+- README reworked around README best practices (hook, badges, table of
+  contents, a `For coding agents` section) and the catalog screenshot replaced
+  with a per-theme gallery.
+
+### Fixed
+- Corrected the marketplace manifest `$schema` URL.
+
 ## [1.0.0] — 2026-06-16
 
 First public release.
