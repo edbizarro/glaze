@@ -70,7 +70,9 @@ themes render identically:
 - `.glaze` wrapper → `.glaze-head` ( `.eyebrow`, `.title`, `.deck`, optional `.meta`>`.chip` )
 - `main` → repeated `.block` ( `<h2>`, `.points`>`li`, optional repeated `.quote`>`cite` )
 - closing (optional): `.takeaway`(`.lbl`,`p`) · `.block.twomin`>`ul` · `.block.refs`>`ul`>`li`>`strong`
-- `.glaze-foot` → `.classification`
+- `.glaze-foot` → optional `.classification` + optional `{{FOOTER_META}}` (a footer
+  signature from a prefs file; **delete the placeholder if unused** so no literal
+  `{{FOOTER_META}}` leaks into the artifact)
 - `hr.rule` between major regions
 - Terminal-only opt-in: add class `add`/`del` to a `.points li` for green-+/red-− diff lines.
 

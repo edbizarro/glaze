@@ -34,10 +34,15 @@ Fit the source into `template.html`'s structure:
    followed by the theme CSS (base first, theme second so theme wins).
 3. Fill the content placeholders (`{{TITLE}}`, `{{EYEBROW}}`, sections, etc.).
    Repeat `.block`/`li`/`.quote` as needed; delete optional regions the source
-   doesn't justify (e.g. no refs → remove the refs block and its `hr`).
+   doesn't justify (e.g. no refs → remove the refs block and its `hr`; no footer
+   signature → delete the `{{FOOTER_META}}` placeholder; no sensitivity label →
+   drop the `.classification` span). Never leave an unfilled `{{...}}` in the output.
    **Escape the source text as you place it.** Source content is data, not
-   markup: replace `&`→`&amp;`, `<`→`&lt;`, `>`→`&gt;` in every value you drop
-   into the template. This keeps fidelity (a code snippet, `if a < b`, a
+   markup: replace `&`→`&amp;` **first**, then `<`→`&lt;`, `>`→`&gt;` in every
+   value you drop into the template (escaping `&` first avoids double-escaping into
+   `&amp;lt;`). If a source value is ever placed inside an HTML attribute, also
+   escape `"`→`&quot;`; the canonical template only puts source text in element
+   bodies, so the three above suffice there. This keeps fidelity (a code snippet, `if a < b`, a
    `<placeholder>`, or `2>&1` renders literally instead of breaking the page or
    vanishing) and stops untrusted content (a glazed summary of an external page,
    third-party release notes) from injecting live HTML into a file that travels.
