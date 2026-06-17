@@ -7,7 +7,20 @@ Glaze is a [Claude Code](https://claude.com/claude-code) skill. It takes content
 you already have and renders it as a polished, standalone HTML file in a visual
 theme of your choice. Glaze *skins* content — it does not generate it.
 
-![The six Glaze themes, side by side](assets/catalog.png)
+## The seven themes
+
+Same content, seven skins. Each theme is one self-contained CSS file — no build
+step, no JS framework.
+
+|  |  |
+|:---:|:---:|
+| ![synthwave theme](assets/themes/synthwave.png)<br>**`synthwave`** — neon outrun 80s | ![manga theme](assets/themes/manga.png)<br>**`manga`** — comic / anime page |
+| ![brutalist theme](assets/themes/brutalist.png)<br>**`brutalist`** — hard offset shadows | ![terminal theme](assets/themes/terminal.png)<br>**`terminal`** — CRT / TUI Tokyo Night |
+| ![sumi theme](assets/themes/sumi.png)<br>**`sumi`** — sumi-e / wabi-sabi | ![coffee theme](assets/themes/coffee.png)<br>**`coffee`** — specialty roaster label |
+| ![dieselpunk theme](assets/themes/dieselpunk.png)<br>**`dieselpunk`** — interwar brass & oiled steel | |
+
+Or open [`skills/Glaze/Catalog.html`](skills/Glaze/Catalog.html) in a browser to
+see them rendered live, side by side.
 
 ## What it is (and isn't)
 
@@ -20,7 +33,7 @@ theme of your choice. Glaze *skins* content — it does not generate it.
   framework. Fonts load from Google Fonts; with no network the page falls back to
   system fonts and still renders. The file travels — send it, open it anywhere.
 
-## Themes
+## Theme reference
 
 | Theme | Vibe | Signature move | Best for |
 |-------|------|----------------|----------|
@@ -30,9 +43,7 @@ theme of your choice. Glaze *skins* content — it does not generate it.
 | `terminal` | CRT/TUI Tokyo Night | CRT screen layer + vim statusbar + diff lines | technical content (safe default) |
 | `sumi` | sumi-e / wabi-sabi | 間 ma + ensō + tate-gaki + hanko seal | calm, reflective, sophisticated |
 | `coffee` | specialty roaster label | tasting-notes headline + roast meter + kraft grain | personal, blog, editorial |
-
-Open [`skills/Glaze/Catalog.html`](skills/Glaze/Catalog.html) in a browser to see
-all six rendered side by side.
+| `dieselpunk` | interwar brass & oiled steel | riveted brass plates + engraved title + amber power-bar + gauges + phosphor stamp | bold industrial, ops, retro-futurist |
 
 ## Install
 
@@ -55,16 +66,16 @@ glaze this summary --style synthwave
 
 Or describe it in plain language — "make this report pretty in the coffee theme",
 "render the plan as a terminal-themed page". If you don't name a theme, Claude
-asks which of the six you want.
+asks which of the seven you want.
 
 ```
-glaze <content-or-reference> --style <synthwave|manga|brutalist|terminal|sumi|coffee>
+glaze <content-or-reference> --style <synthwave|manga|brutalist|terminal|sumi|coffee|dieselpunk>
 ```
 
 - `<content>` can be pasted text, a file path, or the previous message.
 - `--style random` picks one at random.
 - Aliases: `vaporwave`→synthwave, `anime`→manga, `neo`→brutalist, `crt`/`tui`→terminal,
-  `wabi`→sumi, `cafe`→coffee.
+  `wabi`→sumi, `cafe`→coffee, `diesel`/`steampunk`/`brass`→dieselpunk.
 
 ## Add your own theme
 
@@ -78,6 +89,19 @@ The `AddTheme` workflow walks through it. See
 Glaze ships generic. If your setup has a per-skill preferences file, Glaze honors
 it for your preferred language, default theme, output directory, footer
 classification, and signature — without touching the shipped skill.
+
+## Development
+
+The skill itself ships zero-dependency (pure HTML + CSS). The tooling in
+`package.json` is for linting only:
+
+```
+bun install
+bun run lint      # stylelint (themes) + html-validate (template + catalog)
+```
+
+CI ([`.github/workflows/`](.github/workflows)) runs `claude plugin validate`,
+JSON-Schema validation of both manifests, and the lint suite on every PR.
 
 ## License
 
