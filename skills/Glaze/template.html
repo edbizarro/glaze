@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Glaze output carries no JavaScript by design. This CSP blocks all script
+     execution (inline, external, event handlers, javascript: URIs) so a stray
+     <script> or onerror= in the source content can never run when the artifact
+     is opened — defense in depth behind escaping. Styles, fonts, and images
+     stay unrestricted, so no theme is affected. -->
+<meta http-equiv="Content-Security-Policy" content="script-src 'none'">
 <title>{{TITLE}}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

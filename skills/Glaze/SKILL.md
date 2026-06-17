@@ -127,6 +127,15 @@ injecting `*,*::before,*::after{animation:none !important}`, then capture.
 
 ## Gotchas
 
+- **Escape source text — it's data, not markup.** When filling placeholders,
+  replace `&`→`&amp;`, `<`→`&lt;`, `>`→`&gt;` in every value from the source.
+  Skipping this both breaks fidelity (`if a < b`, `<placeholder>`, `2>&1`, code
+  snippets render wrong or vanish) and lets untrusted source content (a glazed
+  summary of an external page, third-party notes) inject live HTML/script into a
+  file built to travel. The template ships `Content-Security-Policy: script-src
+  'none'` as a second layer that blocks any script that slips through — keep that
+  meta tag. The only markup you add is the theme hooks you control (`<em>` in the
+  title, `add`/`del` classes); never tags carried from the source.
 - **`document.fonts.check(...)` is unreliable** — it returns `false` for webfonts
   that are actually loaded (Google Fonts splits families into unicode-range
   subsets). Verify the load by inspecting

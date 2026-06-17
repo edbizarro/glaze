@@ -35,6 +35,15 @@ Fit the source into `template.html`'s structure:
 3. Fill the content placeholders (`{{TITLE}}`, `{{EYEBROW}}`, sections, etc.).
    Repeat `.block`/`li`/`.quote` as needed; delete optional regions the source
    doesn't justify (e.g. no refs → remove the refs block and its `hr`).
+   **Escape the source text as you place it.** Source content is data, not
+   markup: replace `&`→`&amp;`, `<`→`&lt;`, `>`→`&gt;` in every value you drop
+   into the template. This keeps fidelity (a code snippet, `if a < b`, a
+   `<placeholder>`, or `2>&1` renders literally instead of breaking the page or
+   vanishing) and stops untrusted content (a glazed summary of an external page,
+   third-party release notes) from injecting live HTML into a file that travels.
+   The only markup you add is the intentional theme hooks you control — the
+   `<em>` around a title word, the `add`/`del` class on a `.points li` — never
+   tags carried over from the source.
 4. Keep the single `<link>` font tag in `<head>` (covers all themes). Do not add
    `@import` inside `<style>`.
 5. Write to the project's `reports/glaze-<slug>-<theme>-YYYY-MM-DD.html`
