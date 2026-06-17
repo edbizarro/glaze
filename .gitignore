@@ -8,3 +8,8 @@ Thumbs.db
 .idea/
 .vscode/
 reports/
+
+# Verification cruft — loose screenshots from browser checks (Render.md says to
+# remove these; ignoring them stops a stray capture from being committed).
+interceptor-screenshot-*.png
+*.screenshot.png
