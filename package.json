@@ -1,6 +1,6 @@
 {
   "name": "glaze",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "Dev/CI tooling for the Glaze Claude Code plugin. Linting only — the skill artifact itself ships zero-dependency (pure HTML + CSS, no build step).",
   "scripts": {

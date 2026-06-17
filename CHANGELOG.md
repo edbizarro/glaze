@@ -4,6 +4,13 @@ All notable changes to Glaze are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1](https://github.com/edbizarro/glaze/compare/v1.1.0...v1.1.1) (2026-06-17)
+
+
+### Bug Fixes
+
+* **render:** escape source content + add script-src CSP to artifacts ([911d543](https://github.com/edbizarro/glaze/commit/911d543af1ca1fe7f2a193ede99e970b8db77328))
+
 ## [1.1.0] — 2026-06-17
 
 ### Added
