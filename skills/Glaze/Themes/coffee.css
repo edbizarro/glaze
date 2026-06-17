@@ -17,7 +17,7 @@ body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;mix-
 .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#C4582E}
 .block{background:rgba(255,251,243,.5);border:1px solid #c9a87c;border-radius:10px;box-shadow:0 8px 24px rgba(90,56,37,.08)}
 .block > h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.3rem,3.4vw,1.9rem);color:#2B1B12;line-height:1.1}
-.block > h2::before{content:"◜ ";color:#C4582E;font-family:'Space Mono'}
+.block > h2::before{content:"◜ ";color:#C4582E;font-family:'Space Mono',monospace}
 .points li{font-family:'Inter',sans-serif;color:#4a3320;font-size:.98rem;padding-left:22px}
 .points li::before{content:"●";position:absolute;left:0;font-size:.52rem;top:8px;color:#C4582E}
 .quote{font-family:'Fraunces',serif;font-style:italic;font-size:1.12rem;color:#2B1B12;border-top:2px solid #b9885a;border-bottom:2px solid #b9885a;padding:14px 0;margin:14px 0}
