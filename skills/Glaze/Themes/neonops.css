@@ -15,8 +15,6 @@ body::after{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;
 body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
   background:radial-gradient(circle,rgba(255,255,255,.025) 1px,transparent 1px) 0 0/9px 9px}
 
-.glaze{max-width:920px}
-
 /* HEADER — corner bracket + tick-mark ruler */
 .glaze-head{position:relative;padding:18px 0 22px}
 .glaze-head::before{content:"";position:absolute;top:0;left:-10px;width:18px;height:18px;
@@ -92,4 +90,9 @@ hr.rule{height:18px;margin:42px -24px;
   hr.rule{margin:30px -16px}
   .title{font-size:clamp(2.2rem,12vw,3rem)}
   .glaze-foot{flex-direction:column;gap:10px;align-items:flex-start}
+}
+/* respect reduced-motion: freeze the hazard-stripe march + footer cursor blink
+   (both are decorative; nothing here is load-bearing, so disabling is safe) */
+@media (prefers-reduced-motion:reduce){
+  hr.rule,.glaze-foot::after{animation:none}
 }
