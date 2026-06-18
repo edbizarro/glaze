@@ -7,8 +7,13 @@ Goal: turn given content into a self-contained themed HTML artifact and verify i
   message, or an already-extracted body. If unclear, ask. Glaze does NOT generate
   the content — if it must be produced first (a wisdom extraction, a summary),
   produce it first, then glaze the result.
-- **Theme.** Read `--style`. Resolve aliases (see SKILL.md). If none given, ask
-  which of the eight (`terminal` is a safe default). `random` → pick one, announce it.
+- **Theme.** Read `--style`. Resolve aliases (see SKILL.md). An explicit `--style`
+  always wins; `--style random` → pick one, announce it. If **none** given, resolve the
+  **no-style preference** (SKILL.md §No-style preference): `random` → pick at random
+  (every `Themes/*.css` except `_base.css`) and announce; a theme → use it; **unset
+  (first time)** → ask once, in a single interaction, whether to always go random or use
+  a fixed default and which theme, persist the resolved answer (`random` or a slug), then
+  apply. If asking is impossible (headless), default to **random**, not a fixed theme.
 - **Language / classification.** Content language follows the source. Set the
   `.classification` footer only when the content carries a sensitivity label.
   If your environment exposes a per-skill preferences file, honor it.
