@@ -45,10 +45,10 @@ Replace `<name>` with the theme slug (lowercase, one word, e.g. `neonops`). Ever
 | 1 | `skills/Glaze/Themes/<name>.css` | **NEW** — the theme (§2). |
 | 2 | `skills/Glaze/template.html` | Fonts master `<link>` — **only if** §3 needs a new family. |
 | 3 | `skills/Glaze/SKILL.md` — frontmatter `description` | (a) bump the count word ("Ships an **eight**-theme library …"); (b) add `· <name>` to the `(synthwave · … · dieselpunk)` list; (c) add `/<name>` to the `synthwave/…/dieselpunk HTML` USE-WHEN list. |
-| 4 | `skills/Glaze/SKILL.md` — body | (a) add a row to the **Theme library** table; (b) add `` `<name>` `` to the Invocation `--style` list; (c) add the alias line `…→<name>`; (d) "offer the **eight**" (count word); (e) Catalog para "across all **eight** themes"; (f) Example 2 "which of the **eight** themes". |
-| 5 | `skills/Glaze/Workflows/Render.md` | "ask which of the **eight**" (count word). |
-| 6 | `skills/Glaze/Catalog.html` | (a) add a `.theme-<name>` `<style>` block (styles the **catalog** preview classes `.s-eyebrow`/`.s-title`/`.s-points li`/`.s-quote`); (b) add a `<article class="tile">` in the grid; (c) masthead "**Eight** styles…"; (d) bump every "Seven/N skins" sample heading + any "N themes" badge so no stale count remains. |
-| 7 | `README.md` | (a) badge `themes-N`; (b) "one of **eight** … themes"; (c) nav anchor `#the-eight-themes` **and** the `## The eight themes` heading **and** "Same content, **eight** skins"; (d) gallery table — add a tile `![<name> theme](assets/themes/<name>.png)`; (e) **Theme reference** table row; (f) "asks which of the **eight**"; (g) the `--style <…|<name>>` list; (h) the aliases line. |
+| 4 | `skills/Glaze/SKILL.md` — body | (a) add a row to the **Theme library** table; (b) add `` `<name>` `` to the Invocation `--style` list; (c) add the alias line `…→<name>`; (d) Catalog para "across all **eight** themes". |
+| 5 | `skills/Glaze/Workflows/Render.md` | — Render.md no longer hardcodes the count; the no-style flow references the live `Themes/*.css` set (minus `_base.css`). **Nothing to change here for a theme add.** |
+| 6 | `skills/Glaze/Catalog.html` | (a) add a `.theme-<name>` `<style>` block (styles the **catalog** preview classes `.s-eyebrow`/`.s-title`/`.s-points li`/`.s-quote`); (b) add a `<article class="tile">` in the grid; (c) masthead "**Eight** styles…"; (d) bump every "Seven/N skins" sample heading + any "N themes" badge (e.g. the terminal `.enc` `N themes` chip) so no stale count remains; (e) **append `· <name>` to the brutalist `.marquee` theme-name list** — it enumerates every theme and appears **twice** in the one span (this is the line the §6 grep cannot catch). |
+| 7 | `README.md` | (a) badge `themes-N`; (b) "one of **eight** … themes"; (c) nav anchor `#the-eight-themes` **and** the `## The eight themes` heading **and** "Same content, **eight** skins"; (d) gallery table — add a tile `![<name> theme](assets/themes/<name>.png)`; (e) **Theme reference** table row; (f) the `--style <…|<name>>` list; (g) the aliases line. |
 | 8 | `.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json` | bump "**Eight** award-grade … themes" in both descriptions. |
 | 9 | `assets/themes/<name>.png` | **NEW** screenshot asset — see §5 (this is the one that gets forgotten). |
 
@@ -57,6 +57,12 @@ Replace `<name>` with the theme slug (lowercase, one word, e.g. `neonops`). Ever
 ## 5. The gallery screenshot (`assets/themes/<name>.png`) — content MUST match the others
 The README gallery is a **side-by-side comparison**, so every tile must render the **identical
 canonical demo content** — never bespoke/themed copy. (This has been the #1 repeated mistake.)
+
+> Two distinct demo surfaces — don't conflate them. **This §5 demo governs the README
+> `assets/themes/*.png` gallery only.** `Catalog.html`'s live tiles use their *own* shared
+> demo (`one input` / `Eight skins` / `Pick the skin — the content stays the same`), kept in
+> sync separately via §4 item 6. A new tile should match the *other Catalog tiles*, not this
+> §5 PNG demo.
 
 Canonical demo body (verbatim — same as synthwave…dieselpunk):
 - eyebrow `CLAUDE CODE · SKILL` · title `Glaze your <em>output</em>`
@@ -83,6 +89,9 @@ then crop/resize to **1400×947** at the others' aspect:
   `CHANGELOG.md` legitimately mention old counts, so exclude them):
   `rg -ni "seven|themes-7" README.md skills/Glaze/SKILL.md skills/Glaze/Catalog.html skills/Glaze/Workflows/Render.md .claude-plugin`
   must return **nothing**. Any hit = a stale count = failed registration.
+  This grep catches stale count *words* only — it **cannot** catch a stale theme *name-list*
+  (the brutalist `.marquee`) or a missing tile. Those are guarded by the §4 checklist (items
+  6b, 6e); work the checklist top-to-bottom and they stay in sync.
 - Smoke-test: glaze a real multi-section piece with `--style <name>` via `Workflows/Render.md`
   and verify in a browser — signature elements present, fonts loaded, prose legible, mobile
   (≤640px) collapses cleanly. Freeze animations first if a screenshot tool stalls.

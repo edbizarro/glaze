@@ -41,9 +41,28 @@ glaze <content-or-reference> --style <theme>
   `wabi`/`wabisabi`/`sumie`→sumi, `cafe`→coffee,
   `diesel`/`steampunk`/`brass`→dieselpunk,
   `neon`/`ops`/`dataops`/`hud`/`wipeout`→neonops.
-- No `--style` given → **ask which theme** (offer the eight; `terminal` is a safe
-  default for technical content). Never silently pick.
-- `--style random` → choose one at random and say which.
+- No `--style` given → resolve the saved **no-style preference** (see below). It only
+  prompts while the preference is unset (the first no-style run); once set, it never
+  prompts again.
+- `--style random` → choose one at random and say which (one-off; leaves the saved
+  preference untouched).
+
+### No-style preference
+
+When invoked without `--style`, read the **No-style behavior** field from the
+per-skill preferences file (in PAI: `SKILLCUSTOMIZATIONS/Glaze/PREFERENCES.md`):
+
+1. **Unset (first run)** → ask the user once, in a single interaction: *always pick at
+   random*, or *a fixed default* — and if fixed, **which theme** (offer the library
+   list). **Persist** the resolved answer to that field as either `random` or a concrete
+   theme slug, then apply it.
+2. **`random`** → pick uniformly at random from the theme library — every `Themes/*.css`
+   **except `_base.css`** (the shared base, not a theme) — and announce which.
+3. **`<theme>`** → use that theme, no prompt.
+
+An explicit `--style` on the call always overrides the saved preference. If asking is
+impossible (headless/automated) and the preference is still unset, default to **random**
+(consistent with the no-style default), not any fixed theme.
 
 ## Theme library
 
@@ -70,7 +89,9 @@ themes render identically:
 - `.glaze` wrapper → `.glaze-head` ( `.eyebrow`, `.title`, `.deck`, optional `.meta`>`.chip` )
 - `main` → repeated `.block` ( `<h2>`, `.points`>`li`, optional repeated `.quote`>`cite` )
 - closing (optional): `.takeaway`(`.lbl`,`p`) · `.block.twomin`>`ul` · `.block.refs`>`ul`>`li`>`strong`
-- `.glaze-foot` → `.classification`
+- `.glaze-foot` → optional `.classification` + optional `{{FOOTER_META}}` (a footer
+  signature from a prefs file; **delete the placeholder if unused** so no literal
+  `{{FOOTER_META}}` leaks into the artifact)
 - `hr.rule` between major regions
 - Terminal-only opt-in: add class `add`/`del` to a `.points li` for green-+/red-− diff lines.
 
@@ -172,11 +193,12 @@ User: "summarize this video ... then make an HTML in synthwave style"
 → writes reports/glaze-<slug>-synthwave-YYYY-MM-DD.html, verifies in a browser
 ```
 
-**Example 2: theme not specified**
+**Example 2: theme not specified (no --style)**
 ```
 User: "glaze this summary"
-→ Render: the content is clear, but there's no --style
-→ ask which of the eight themes; never silently pick
+→ Render: content is clear, but there's no --style → resolve the no-style preference
+→ set to `random` → pick one at random and announce it (or a fixed theme → use it)
+→ unset (first time) → ask once: always random, or a fixed default? persist the answer
 → assemble + verify + deliver
 ```
 

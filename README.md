@@ -82,8 +82,9 @@ glaze this summary --style synthwave
 ```
 
 Or describe it in plain language — "make this report pretty in the coffee theme",
-"render the plan as a terminal-themed page". If you don't name a theme, Claude
-asks which of the eight you want.
+"render the plan as a terminal-themed page". If you don't name a theme, Claude picks
+one at random by default — and on the very first no-style run it asks once whether
+you'd rather always go random or set a fixed default theme, then remembers your choice.
 
 ```
 glaze <content-or-reference> --style <synthwave|manga|brutalist|terminal|sumi|coffee|dieselpunk|neonops>
@@ -126,8 +127,9 @@ Read `SKILL.md` first — it is the source of truth. The non-negotiable contract
 
 1. **Skin, don't generate.** Glaze never writes the content. If the body must be
    produced (a summary, an extraction), produce it in a prior step, then glaze it.
-2. **Always resolve a theme.** Pass `--style <theme>`. If none is given, *ask* —
-   never silently pick. `terminal` is the safe default for technical content.
+2. **Always resolve a theme.** Pass `--style <theme>`. If none is given, resolve the
+   saved no-style preference: random by default, or the user's fixed default if set
+   (asked once on the first no-style run, then remembered).
 3. **Emit exactly one self-contained file.** Inline `Themes/_base.css` then the
    chosen `Themes/<theme>.css` into `template.html`'s `{{GLAZE_STYLE}}` placeholder
    (base first, theme second so the theme wins). Never link CSS by relative path —
