@@ -4,6 +4,13 @@ All notable changes to Glaze are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0](https://github.com/edbizarro/glaze/compare/v1.2.0...v1.3.0) (2026-06-18)
+
+
+### Features
+
+* **glaze:** random theme by default when no --style, with first-run preference prompt ([#4](https://github.com/edbizarro/glaze/issues/4)) ([bb6608b](https://github.com/edbizarro/glaze/commit/bb6608bf7571a4a5c8623949f7f24b8267385c16))
+
 ## [1.2.0](https://github.com/edbizarro/glaze/compare/v1.1.1...v1.2.0) (2026-06-17)
 
 
